@@ -25,6 +25,18 @@ function set(next: State) {
 async function init() {
   const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
   tabId = tab?.id;
+  await browser.action.setBadgeText({ text: "" });
+
+  // Si el último envío falló hace poco, mostrarlo (el popup estaba cerrado cuando ocurrió)
+  const { lastSend, lastExtract } = (await browser.storage.local.get(["lastSend", "lastExtract"])) as {
+    lastSend?: { ok: boolean; error?: string; at: number };
+    lastExtract?: CatalogImport;
+  };
+  if (lastSend && !lastSend.ok && Date.now() - lastSend.at < 10 * 60_000) {
+    await browser.storage.local.remove("lastSend");
+    return set({ kind: "error", message: `El último envío falló: ${lastSend.error}`, data: lastExtract });
+  }
+
   const onPortal = !!tab?.url?.startsWith(PORTAL_URL);
   set(onPortal ? { kind: "ready" } : { kind: "not-portal" });
 }

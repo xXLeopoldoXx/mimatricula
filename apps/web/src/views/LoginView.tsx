@@ -1,11 +1,13 @@
 import { useState, type FormEvent } from "react";
-import { UTP_DOMAIN } from "@mimatricula/shared";
+import { UTP_DOMAIN, type CatalogImport } from "@mimatricula/shared";
 
 interface Props {
   onLogin: (email: string, name: string) => string | null;
+  /** Oferta recibida de la extensión antes de iniciar sesión. */
+  imported?: CatalogImport | null;
 }
 
-export default function LoginView({ onLogin }: Props) {
+export default function LoginView({ onLogin, imported }: Props) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -27,6 +29,13 @@ export default function LoginView({ onLogin }: Props) {
             <div className="text-xs text-[#9ca3af]">Matrícula inteligente y reseñas estudiantiles</div>
           </div>
         </div>
+
+        {imported && (
+          <div role="status" className="mb-5 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-900">
+            ✓ Recibimos tu oferta {imported.offer.term}: {imported.offer.courses.length} cursos y{" "}
+            {imported.offer.sections.length} secciones. Inicia sesión para verla.
+          </div>
+        )}
 
         <h1 className="text-xl font-bold text-[#111827]">Bienvenido, estudiante</h1>
         <p className="mt-1 text-sm text-[#4b5563]">Ingresa con tu correo institucional para personalizar tu matrícula.</p>

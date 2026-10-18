@@ -27,7 +27,7 @@ export default function App() {
   const { student, login, logout } = useStudent();
   // Escucha a la extensión siempre, incluso en la pantalla de login
   const offer = useImportedOffer();
-  if (!student) return <LoginView onLogin={login} />;
+  if (!student) return <LoginView onLogin={login} imported={offer.imported} />;
   return <Shell name={student.name} onLogout={logout} offer={offer} />;
 }
 

@@ -26,7 +26,7 @@ export default defineContentScript({
       window.addEventListener("message", onAck);
 
       const post = () => {
-        if (++tries > 20) return finish({ ok: false, error: "MiMatrícula no respondió. ¿La página terminó de cargar?" });
+        if (++tries > 12) return finish({ ok: false, error: "MiMatrícula abrió pero no recibió los datos. Asegúrate de usar la versión más reciente de la web (debe tener la pestaña \"Mi Oferta\")." });
         window.postMessage({ type: PAGE_IMPORT, payload: msg.payload }, window.location.origin);
       };
       post();

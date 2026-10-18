@@ -9,11 +9,17 @@ export default defineBackground(() => {
   browser.runtime.onMessage.addListener((msg: ExtMessage, _sender, sendResponse) => {
     if (msg.type !== "MM_SEND") return;
     deliver(msg.payload)
-      .then(() => sendResponse({ ok: true, data: null } satisfies Result<null>))
-      .catch((e: unknown) =>
-        sendResponse({ ok: false, error: e instanceof Error ? e.message : String(e) } satisfies Result<null>),
-      );
+      .then(() => finish({ ok: true, data: null }))
+      .catch((e: unknown) => finish({ ok: false, error: e instanceof Error ? e.message : String(e) }));
     return true;
+
+    // El popup suele estar cerrado cuando esto termina: el resultado queda en el ícono y en storage
+    async function finish(r: Result<null>) {
+      await browser.storage.local.set({ lastSend: { ...r, at: Date.now() } });
+      await browser.action.setBadgeBackgroundColor({ color: r.ok ? "#059669" : "#dc2626" });
+      await browser.action.setBadgeText({ text: r.ok ? "✓" : "!" });
+      sendResponse(r);
+    }
   });
 });
 
@@ -24,20 +30,21 @@ async function deliver(payload: Extract<ExtMessage, { type: "MM_SEND" }>["payloa
   if (existing) await browser.tabs.update(tab.id, { active: true });
   await waitForComplete(tab.id);
 
-  // El content script puede tardar un instante en registrarse tras la carga
-  for (let i = 0; i < 10; i++) {
+  // El content script puede tardar un instante en registrarse tras la carga:
+  // solo se reintenta mientras no haya quién reciba el mensaje.
+  let res: Result<null> | undefined;
+  for (let i = 0; i < 10 && !res; i++) {
     try {
-      const res = (await browser.tabs.sendMessage(tab.id, { type: "MM_DELIVER", payload } satisfies ExtMessage)) as
-        | Result<null>
-        | undefined;
-      if (res?.ok) return;
-      if (res && !res.ok) throw new Error(res.error);
-    } catch (e) {
-      if (i === 9) throw e instanceof Error ? e : new Error(String(e));
+      res = (await browser.tabs.sendMessage(tab.id, { type: "MM_DELIVER", payload } satisfies ExtMessage)) as Result<null>;
+    } catch {
+      await new Promise((r) => setTimeout(r, 400));
     }
-    await new Promise((r) => setTimeout(r, 400));
   }
-  throw new Error("MiMatrícula no recibió los datos.");
+  if (!res) {
+    // "Receiving end does not exist": la página no cargó o no es MiMatrícula
+    throw new Error("No se pudo conectar con MiMatrícula. Revisa que `pnpm dev` esté corriendo y que http://localhost:5173 cargue.");
+  }
+  if (!res.ok) throw new Error(res.error);
 }
 
 function waitForComplete(tabId: number): Promise<void> {
