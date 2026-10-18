@@ -1,31 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
-@import 'tailwindcss';
+@import "tailwindcss";
 
+/* Paleta inspirada en el portal UTP (aproximada de capturas; ajustar con la web real) */
 @theme {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --font-sans: "Lato", system-ui, sans-serif;
+  --color-utp-red: #f0384b;
+  --color-utp-red-dark: #d92a3d;
+  --color-utp-violet: #5b36f2;
+  --color-utp-violet-dark: #4524d9;
+  --color-utp-violet-soft: #ece8fe;
+  --color-utp-navy: #1e1b6b;
+  --color-utp-bg: #eef3fa;
+  --color-utp-head: #eaf1fb;
+  --color-utp-line: #dde3ee;
+  --color-utp-ink: #1f2430;
+  --color-utp-muted: #5f6675;
+  --color-utp-star: #f5a524;
 }
 
-/* En @layer base para que las utilidades de Tailwind (p-6, mt-4…) puedan sobrescribirlo */
-@layer base {
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html,
+body,
+#root {
+  min-height: 100%;
 }
-html, body, #root { height: 100%; }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.55;
-  background: #f0f2f5;
-  color: #111827;
-  -webkit-font-smoothing: antialiased;
+  @apply bg-utp-bg text-utp-ink font-sans antialiased;
 }
-
-::selection { background: rgba(200,41,58,0.12); }
-:focus-visible { outline: 2px solid #c8293a; outline-offset: 2px; border-radius: 4px; }
-
-::-webkit-scrollbar { width: 4px; height: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #9ca3af; }

@@ -32,7 +32,9 @@ pnpm dev          # levanta la web (5173) y el portal ficticio (5174) a la vez
 1. Con `pnpm dev` corriendo, entra a MiMatrícula (http://localhost:5173) e inicia sesión.
 2. En otra pestaña abre el portal (http://localhost:5174).
 3. Con el portal al frente, haz clic en la extensión → **Extraer oferta** → **Enviar a MiMatrícula**.
-4. La extensión vuelve a MiMatrícula, aparece el aviso verde "Oferta importada" y la pestaña **Mi Oferta** muestra los cursos y las secciones.
+4. La extensión vuelve a MiMatrícula, aparece el aviso verde "Oferta importada" y la sección **Cursos** muestra la oferta.
+
+Sin extensión también puedes probar: en MiMatrícula pulsa **Usar datos de demo**.
 
 Si cambias el código de la extensión, vuelve a correr `pnpm build:ext` y presiona ↻ en la tarjeta de la extensión en `chrome://extensions`.
 
@@ -53,7 +55,7 @@ pnpm gen:data      # regenera cursos, secciones y reseñas de demo
 
 ```
 apps/
-  web/          MiMatrícula: la app del estudiante (React + Tailwind)
+  web/          MiMatrícula: la app del estudiante (React + Tailwind + react-router + Zustand)
   portal-mock/  Portal de matrícula ficticio que imita al de la universidad
   extension/    Extensión del navegador (WXT, Manifest V3) que lee el portal y envía la oferta
   api/          (fase 4) API Fastify + Prisma + PostgreSQL
@@ -75,6 +77,20 @@ Todas las apps usan los mismos tipos: `Course`, `Section` (con varias `sessions`
 - Avisa los cruces de horario y las secciones sin vacantes. Guarda la selección en el navegador.
 - Cada fila tiene atributos `data-mm="course"` y `data-mm="section"` con sus datos, para que la extensión los pueda leer.
 
+### MiMatrícula (`apps/web`)
+
+| Ruta | Qué hace |
+|---|---|
+| `/` | Inicio: resumen, docentes mejor evaluados, pasos |
+| `/cursos` | Oferta por curso: secciones con docente, nota, vacantes y aviso de cruce; filtro por turno |
+| `/horario` | Grilla semanal con horas reales y lista de cursos elegidos |
+| `/profesores` y `/profesores/:id` | Ranking, detalle por criterio, reseñas y formulario para escribir una |
+| `/recomendaciones` | Mejores secciones por curso y "Aplicar recomendación" (sin cruces, hasta 22 créditos) |
+| `/generador` | Fase 5: asistente de preferencias |
+
+- Estado en `src/store/` (Zustand, guardado en el navegador): oferta, horario elegido y reseñas propias.
+- La nota de cada docente se calcula en `packages/shared/src/ratings.ts` con un promedio bayesiano: con pocas reseñas se acerca al promedio general.
+
 ### Extensión (`apps/extension`)
 
 - `portal.content.ts` corre en el portal. **Solo lee:** pide la oferta a la misma API que usa el portal, la cruza con la tabla visible y la valida con Zod. Nunca hace clic ni envía formularios.
@@ -95,7 +111,7 @@ Todas las apps usan los mismos tipos: `Course`, `Section` (con varias `sessions`
 | 1 | Portal de matrícula ficticio | ✅ |
 | – | Login de demo `@utp.edu.pe` en la web | ✅ |
 | 2 | Extensión que extrae la oferta y la envía | ✅ |
-| 3 | Web migrada: rutas, Tailwind, tema UTP, responsive, datos reales | ⏳ |
+| 3 | Web migrada: rutas, Tailwind, tema UTP, responsive, datos reales | ✅ |
 | 4 | API + base de datos + reseñas persistentes | ⏳ |
 | 5 | Asistente de preferencias + generador inteligente | ⏳ |
 | 6 | Análisis de sentimiento de reseñas | ⏳ |
