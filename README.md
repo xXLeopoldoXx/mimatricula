@@ -15,14 +15,34 @@ pnpm install
 pnpm dev          # levanta la web (5173) y el portal ficticio (5174) a la vez
 ```
 
+> En Windows, si `corepack enable` da error de permisos, usa `npx pnpm@10 install` y `npx pnpm@10 dev`.
+
 - **MiMatrícula (web):** http://localhost:5173. Ingresa con cualquier nombre y un correo `@utp.edu.pe`. Para cerrar sesión, haz clic en tu avatar.
 - **Portal de matrícula ficticio:** http://localhost:5174
+
+### Instalar la extensión (Chrome o Edge)
+
+1. `pnpm build:ext`. Esto genera la carpeta `apps/extension/.output/chrome-mv3`.
+2. Abre `chrome://extensions` (o `edge://extensions`) y activa el **Modo de desarrollador**.
+3. Haz clic en **Cargar descomprimida** y elige la carpeta `chrome-mv3`.
+4. Fija la extensión (ícono de pieza de rompecabezas → 📌).
+
+**Probar el flujo completo:**
+
+1. Con `pnpm dev` corriendo, entra a MiMatrícula (http://localhost:5173) e inicia sesión.
+2. En otra pestaña abre el portal (http://localhost:5174).
+3. Con el portal al frente, haz clic en la extensión → **Extraer oferta** → **Enviar a MiMatrícula**.
+4. La extensión vuelve a MiMatrícula, aparece el aviso verde "Oferta importada" y la pestaña **Mi Oferta** muestra los cursos y las secciones.
+
+Si cambias el código de la extensión, vuelve a correr `pnpm build:ext` y presiona ↻ en la tarjeta de la extensión en `chrome://extensions`.
 
 Otros comandos:
 
 ```bash
 pnpm dev:web       # solo la web
 pnpm dev:portal    # solo el portal ficticio
+pnpm build:ext     # compila la extensión en apps/extension/.output/chrome-mv3
+pnpm dev:ext       # extensión con recarga automática (abre un Chrome de pruebas)
 pnpm test          # pruebas (Vitest)
 pnpm typecheck     # revisión de tipos
 pnpm build         # compila todo
@@ -35,7 +55,7 @@ pnpm gen:data      # regenera cursos, secciones y reseñas de demo
 apps/
   web/          MiMatrícula: la app del estudiante (React + Tailwind)
   portal-mock/  Portal de matrícula ficticio que imita al de la universidad
-  extension/    (fase 2) extensión del navegador que lee el portal
+  extension/    Extensión del navegador (WXT, Manifest V3) que lee el portal y envía la oferta
   api/          (fase 4) API Fastify + Prisma + PostgreSQL
 packages/
   shared/       Tipos y esquemas Zod: el contrato entre todas las apps
@@ -55,6 +75,13 @@ Todas las apps usan los mismos tipos: `Course`, `Section` (con varias `sessions`
 - Avisa los cruces de horario y las secciones sin vacantes. Guarda la selección en el navegador.
 - Cada fila tiene atributos `data-mm="course"` y `data-mm="section"` con sus datos, para que la extensión los pueda leer.
 
+### Extensión (`apps/extension`)
+
+- `portal.content.ts` corre en el portal. **Solo lee:** pide la oferta a la misma API que usa el portal, la cruza con la tabla visible y la valida con Zod. Nunca hace clic ni envía formularios.
+- `background.ts` busca o abre la pestaña de MiMatrícula y le entrega los datos. Va en el background porque el popup se cierra al cambiar de pestaña.
+- `mimatricula.content.ts` corre en la web y pasa los datos a la página con `window.postMessage`. La web los vuelve a validar antes de guardarlos.
+- Para apuntar al portal real o a la web desplegada, cambia los `matches` de los content scripts y los `host_permissions` en `wxt.config.ts`, y escribe un nuevo adaptador en `lib/extract.ts`.
+
 ### Datos de demo (`packages/demo-data`)
 
 12 cursos, 102 secciones, 25 docentes ficticios y 144 reseñas. Todas las reseñas tienen `demo: true` para poder borrarlas fácilmente.
@@ -67,7 +94,7 @@ Todas las apps usan los mismos tipos: `Course`, `Section` (con varias `sessions`
 | 0 | Monorepo + contrato de datos | ✅ |
 | 1 | Portal de matrícula ficticio | ✅ |
 | – | Login de demo `@utp.edu.pe` en la web | ✅ |
-| 2 | Extensión que extrae la oferta y la envía | ⏳ |
+| 2 | Extensión que extrae la oferta y la envía | ✅ |
 | 3 | Web migrada: rutas, Tailwind, tema UTP, responsive, datos reales | ⏳ |
 | 4 | API + base de datos + reseñas persistentes | ⏳ |
 | 5 | Asistente de preferencias + generador inteligente | ⏳ |

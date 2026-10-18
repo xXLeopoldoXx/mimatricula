@@ -13,6 +13,6 @@ export function isUtpEmail(email: string): boolean {
 
 /** "u23241814@utp.edu.pe" -> "U23241814" (código de alumno), si el usuario del correo lo parece. */
 export function studentCodeFromEmail(email: string): string | undefined {
-  const user = email.trim().split("@")[0];
+  const user = email.trim().split("@")[0] ?? "";
   return /^u\d{8}$/i.test(user) ? user.toUpperCase() : undefined;
 }

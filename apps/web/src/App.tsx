@@ -8,11 +8,15 @@ import { Section } from "./data";
 import { T } from "./theme";
 import LoginView from "./views/LoginView";
 import { initials, useStudent } from "./auth/useStudent";
+import { useImportedOffer } from "./import/useImportedOffer";
+import ImportBanner from "./import/ImportBanner";
+import OfferView from "./views/OfferView";
 
-type Tab = "inicio" | "horario" | "profesores" | "optimizador" | "recomendaciones";
+type Tab = "inicio" | "oferta" | "horario" | "profesores" | "optimizador" | "recomendaciones";
 
 const NAV: { id: Tab; label: string }[] = [
   { id: "inicio",          label: "Inicio"          },
+  { id: "oferta",          label: "Mi Oferta"       },
   { id: "horario",         label: "Mi Horario"      },
   { id: "profesores",      label: "Profesores"       },
   { id: "optimizador",     label: "Generador"        },
@@ -21,11 +25,13 @@ const NAV: { id: Tab; label: string }[] = [
 
 export default function App() {
   const { student, login, logout } = useStudent();
+  // Escucha a la extensión siempre, incluso en la pantalla de login
+  const offer = useImportedOffer();
   if (!student) return <LoginView onLogin={login} />;
-  return <Shell name={student.name} onLogout={logout} />;
+  return <Shell name={student.name} onLogout={logout} offer={offer} />;
 }
 
-function Shell({ name, onLogout }: { name: string; onLogout: () => void }) {
+function Shell({ name, onLogout, offer }: { name: string; onLogout: () => void; offer: ReturnType<typeof useImportedOffer> }) {
   const [tab, setTab]         = useState<Tab>("inicio");
   const [sections, setSections] = useState<Section[]>([]);
   const [visible, setVisible]   = useState(true);
@@ -162,6 +168,13 @@ function Shell({ name, onLogout }: { name: string; onLogout: () => void }) {
         </div>
       </header>
 
+      <ImportBanner
+        imported={offer.imported}
+        justImported={offer.justImported}
+        onView={() => { offer.dismiss(); go("oferta"); }}
+        onDismiss={offer.dismiss}
+      />
+
       {/* ── Content ── */}
       <main style={{
         flex: 1,
@@ -170,6 +183,7 @@ function Shell({ name, onLogout }: { name: string; onLogout: () => void }) {
         transition: "opacity 0.13s, transform 0.13s",
       }}>
         {tab === "inicio"          && <HomeView studentName={name} enrolledSections={sections} onNavigate={go} />}
+        {tab === "oferta"          && <OfferView imported={offer.imported} onClear={offer.clear} />}
         {tab === "horario"         && <ScheduleView enrolledSections={sections} onRemove={remove} onAdd={add} />}
         {tab === "profesores"      && <ProfessorsView onNavigateToSchedule={() => go("horario")} />}
         {tab === "optimizador"     && <OptimizerView enrolledSections={sections} onApply={apply} />}

@@ -24,7 +24,7 @@ export const DAY_SHORT: Record<Day, string> = {
 
 /** "13:45" -> 825 */
 export function toMinutes(hhmm: string): number {
-  const [h, m] = hhmm.split(":").map(Number);
+  const [h = 0, m = 0] = hhmm.split(":").map(Number);
   return h * 60 + m;
 }
 
