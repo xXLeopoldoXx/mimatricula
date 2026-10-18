@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Paleta aproximada del portal UTP (estimada de capturas; ajustar con la web real) */
+@theme {
+  --font-sans: "Lato", system-ui, sans-serif;
+  --color-utp-red: #f0384b;
+  --color-utp-red-dark: #d92a3d;
+  --color-utp-violet: #5b36f2;
+  --color-utp-violet-dark: #4524d9;
+  --color-utp-violet-soft: #ece8fe;
+  --color-utp-navy: #1e1b6b;
+  --color-utp-bg: #eef3fa;
+  --color-utp-head: #eaf1fb;
+  --color-utp-line: #dde3ee;
+  --color-utp-ink: #1f2430;
+  --color-utp-muted: #5f6675;
+  --color-utp-chip: #c2410c;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-utp-bg text-utp-ink font-sans antialiased;
+}

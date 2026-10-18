@@ -1,0 +1,2173 @@
+{
+  "university": "Universidad Tecnológica del Perú (simulación)",
+  "term": "2027-1",
+  "student": {
+    "code": "U00000000",
+    "name": "Estudiante Demo"
+  },
+  "courses": [
+    {
+      "code": "1X101",
+      "name": "Nivelación De Redacción",
+      "weeklyHours": 4,
+      "credits": 4,
+      "cycle": "00",
+      "type": "OBLIGATORIO",
+      "repeated": true
+    },
+    {
+      "code": "1N03I",
+      "name": "Inglés I",
+      "weeklyHours": 3,
+      "credits": 3,
+      "cycle": "01",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1IN06",
+      "name": "Introducción A La Ingeniería Industrial",
+      "weeklyHours": 2,
+      "credits": 2,
+      "cycle": "01",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1N07C",
+      "name": "Ciudadanía Y Reflexión Ética",
+      "weeklyHours": 3,
+      "credits": 3,
+      "cycle": "01",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1VU01",
+      "name": "Introducción A La Vida Universitaria",
+      "weeklyHours": 2,
+      "credits": 2,
+      "cycle": "01",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1I05N",
+      "name": "Dibujo Para Ingeniería",
+      "weeklyHours": 3,
+      "credits": 2,
+      "cycle": "02",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1I07N",
+      "name": "Principios De Algoritmos",
+      "weeklyHours": 2,
+      "credits": 2,
+      "cycle": "02",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1I0N3",
+      "name": "Matemática II",
+      "weeklyHours": 4,
+      "credits": 4,
+      "cycle": "02",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1Q01G",
+      "name": "Química General",
+      "weeklyHours": 3.44,
+      "credits": 2.72,
+      "cycle": "02",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1L02Q",
+      "name": "Laboratorio De Química General",
+      "weeklyHours": 0.56,
+      "credits": 0.28,
+      "cycle": "02",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1I04N",
+      "name": "Herramientas Informáticas Para La Toma De Decisiones",
+      "weeklyHours": 2,
+      "credits": 2,
+      "cycle": "03",
+      "type": "OBLIGATORIO",
+      "repeated": false
+    },
+    {
+      "code": "1S10L",
+      "name": "Economía Ambiental Y Sostenibilidad",
+      "weeklyHours": 3,
+      "credits": 3,
+      "cycle": "06",
+      "type": "ELECTIVO",
+      "repeated": false
+    }
+  ],
+  "sections": [
+    {
+      "code": "40019",
+      "courseCode": "1X101",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "C-412"
+        },
+        {
+          "day": "VIE",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "C-412"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 19
+    },
+    {
+      "code": "37587",
+      "courseCode": "1X101",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-01",
+      "professorName": "Mg. Rosa Quispe Huamán",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "B-402"
+        },
+        {
+          "day": "JUE",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "B-402"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 40
+    },
+    {
+      "code": "45702",
+      "courseCode": "1X101",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-04",
+      "professorName": "Lic. Jorge Alvarado Paz",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "13:45",
+          "end": "15:15",
+          "room": "D-503"
+        },
+        {
+          "day": "JUE",
+          "start": "13:45",
+          "end": "15:15",
+          "room": "D-503"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 40
+    },
+    {
+      "code": "44231",
+      "courseCode": "1X101",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "07:00",
+          "end": "08:30",
+          "room": "D-401"
+        },
+        {
+          "day": "VIE",
+          "start": "07:00",
+          "end": "08:30",
+          "room": "D-401"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 14
+    },
+    {
+      "code": "42390",
+      "courseCode": "1X101",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-01",
+      "professorName": "Mg. Rosa Quispe Huamán",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "D-603"
+        },
+        {
+          "day": "JUE",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "D-603"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 36
+    },
+    {
+      "code": "40375",
+      "courseCode": "1X101",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-04",
+      "professorName": "Lic. Jorge Alvarado Paz",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "C-402"
+        },
+        {
+          "day": "VIE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "C-402"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 35
+    },
+    {
+      "code": "34044",
+      "courseCode": "1X101",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "B-504"
+        },
+        {
+          "day": "VIE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "B-504"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 33
+    },
+    {
+      "code": "49649",
+      "courseCode": "1X101",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-01",
+      "professorName": "Mg. Rosa Quispe Huamán",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "D-115"
+        },
+        {
+          "day": "JUE",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "D-115"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 39
+    },
+    {
+      "code": "38320",
+      "courseCode": "1N03I",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-07",
+      "professorName": "Mg. Lucía Fernández Ccori",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "20:45",
+          "end": "23:00",
+          "room": "A-111"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 19
+    },
+    {
+      "code": "43908",
+      "courseCode": "1N03I",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-06",
+      "professorName": "Lic. Kevin Ramírez Soto",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "20:45",
+          "end": "23:00",
+          "room": "B-205"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 23
+    },
+    {
+      "code": "49369",
+      "courseCode": "1N03I",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-05",
+      "professorName": "Lic. Andrea Torres Lazo",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "15:30",
+          "end": "17:45",
+          "room": "E-401"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 19
+    },
+    {
+      "code": "48219",
+      "courseCode": "1N03I",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-07",
+      "professorName": "Mg. Lucía Fernández Ccori",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "17:15",
+          "end": "19:30",
+          "room": "A-114"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 13
+    },
+    {
+      "code": "41340",
+      "courseCode": "1N03I",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-06",
+      "professorName": "Lic. Kevin Ramírez Soto",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "13:45",
+          "end": "16:00",
+          "room": "D-515"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 23
+    },
+    {
+      "code": "49534",
+      "courseCode": "1N03I",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-05",
+      "professorName": "Lic. Andrea Torres Lazo",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "08:30",
+          "end": "10:45",
+          "room": "A-304"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 34
+    },
+    {
+      "code": "44978",
+      "courseCode": "1N03I",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-07",
+      "professorName": "Mg. Lucía Fernández Ccori",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "15:30",
+          "end": "17:45",
+          "room": "C-305"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 31
+    },
+    {
+      "code": "49039",
+      "courseCode": "1N03I",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-06",
+      "professorName": "Lic. Kevin Ramírez Soto",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "15:30",
+          "end": "17:45",
+          "room": "B-205"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 10
+    },
+    {
+      "code": "35425",
+      "courseCode": "1IN06",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-09",
+      "professorName": "Mg. Diana Paredes Luna",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "E-302"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 22
+    },
+    {
+      "code": "47409",
+      "courseCode": "1IN06",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-08",
+      "professorName": "Ing. Miguel Castillo Rojas",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "A-214"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 18
+    },
+    {
+      "code": "35194",
+      "courseCode": "1IN06",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-11",
+      "professorName": "Mg. Silvia Campos Arce",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "E-210"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 44
+    },
+    {
+      "code": "47986",
+      "courseCode": "1IN06",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-10",
+      "professorName": "Ing. Renzo Gutiérrez Chávez",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "D-309"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 33
+    },
+    {
+      "code": "30587",
+      "courseCode": "1IN06",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-09",
+      "professorName": "Mg. Diana Paredes Luna",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "C-606"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 14
+    },
+    {
+      "code": "33990",
+      "courseCode": "1IN06",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-08",
+      "professorName": "Ing. Miguel Castillo Rojas",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "A-502"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 17
+    },
+    {
+      "code": "33126",
+      "courseCode": "1IN06",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-11",
+      "professorName": "Mg. Silvia Campos Arce",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "07:00",
+          "end": "08:30",
+          "room": "A-113"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 36
+    },
+    {
+      "code": "44677",
+      "courseCode": "1IN06",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-10",
+      "professorName": "Ing. Renzo Gutiérrez Chávez",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "D-105"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 30
+    },
+    {
+      "code": "43448",
+      "courseCode": "1IN06",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-09",
+      "professorName": "Mg. Diana Paredes Luna",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "A-307"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 33
+    },
+    {
+      "code": "35155",
+      "courseCode": "1N07C",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "20:45",
+          "end": "23:00",
+          "room": "B-609"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 35
+    },
+    {
+      "code": "47360",
+      "courseCode": "1N07C",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-01",
+      "professorName": "Mg. Rosa Quispe Huamán",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "19:00",
+          "end": "21:15",
+          "room": "D-414"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 24
+    },
+    {
+      "code": "43045",
+      "courseCode": "1N07C",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-04",
+      "professorName": "Lic. Jorge Alvarado Paz",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "19:00",
+          "end": "21:15",
+          "room": "B-609"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 12
+    },
+    {
+      "code": "39357",
+      "courseCode": "1N07C",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-03",
+      "professorName": "Mg. Patricia Salazar Vega",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "13:45",
+          "end": "16:00",
+          "room": "D-609"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 8
+    },
+    {
+      "code": "41931",
+      "courseCode": "1N07C",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "08:30",
+          "end": "10:45",
+          "room": "C-304"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 32
+    },
+    {
+      "code": "43006",
+      "courseCode": "1N07C",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-01",
+      "professorName": "Mg. Rosa Quispe Huamán",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "10:15",
+          "end": "12:30",
+          "room": "A-412"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 26
+    },
+    {
+      "code": "36465",
+      "courseCode": "1N07C",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-04",
+      "professorName": "Lic. Jorge Alvarado Paz",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "07:00",
+          "end": "09:15",
+          "room": "B-612"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 8
+    },
+    {
+      "code": "35050",
+      "courseCode": "1N07C",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-03",
+      "professorName": "Mg. Patricia Salazar Vega",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "08:30",
+          "end": "10:45",
+          "room": "B-310"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 29
+    },
+    {
+      "code": "42523",
+      "courseCode": "1N07C",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "17:15",
+          "end": "19:30",
+          "room": "A-409"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 34
+    },
+    {
+      "code": "48149",
+      "courseCode": "1VU01",
+      "shift": "NOCHE",
+      "modality": "VIRTUAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "B-101"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 23
+    },
+    {
+      "code": "37998",
+      "courseCode": "1VU01",
+      "shift": "NOCHE",
+      "modality": "VIRTUAL",
+      "professorId": "doc-04",
+      "professorName": "Lic. Jorge Alvarado Paz",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "D-604"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 20
+    },
+    {
+      "code": "49313",
+      "courseCode": "1VU01",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-03",
+      "professorName": "Mg. Patricia Salazar Vega",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "A-607"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 25
+    },
+    {
+      "code": "31679",
+      "courseCode": "1VU01",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-01",
+      "professorName": "Mg. Rosa Quispe Huamán",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "B-613"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 22
+    },
+    {
+      "code": "38647",
+      "courseCode": "1VU01",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-02",
+      "professorName": "Lic. Carlos Mendoza Ríos",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "13:45",
+          "end": "15:15",
+          "room": "B-303"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 18
+    },
+    {
+      "code": "39507",
+      "courseCode": "1VU01",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-04",
+      "professorName": "Lic. Jorge Alvarado Paz",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "13:45",
+          "end": "15:15",
+          "room": "C-312"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 45
+    },
+    {
+      "code": "32712",
+      "courseCode": "1VU01",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-03",
+      "professorName": "Mg. Patricia Salazar Vega",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "15:30",
+          "end": "17:00",
+          "room": "D-110"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 35
+    },
+    {
+      "code": "46069",
+      "courseCode": "1I05N",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-23",
+      "professorName": "Arq. Claudia Morales Prado",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "20:45",
+          "end": "23:00",
+          "room": "B-507"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 42
+    },
+    {
+      "code": "42480",
+      "courseCode": "1I05N",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-22",
+      "professorName": "Ing. Daniel Vargas Inga",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "19:00",
+          "end": "21:15",
+          "room": "C-507"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 39
+    },
+    {
+      "code": "30534",
+      "courseCode": "1I05N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-23",
+      "professorName": "Arq. Claudia Morales Prado",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "15:30",
+          "end": "17:45",
+          "room": "E-415"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 17
+    },
+    {
+      "code": "43522",
+      "courseCode": "1I05N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-22",
+      "professorName": "Ing. Daniel Vargas Inga",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "13:45",
+          "end": "16:00",
+          "room": "B-514"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 15
+    },
+    {
+      "code": "43317",
+      "courseCode": "1I05N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-23",
+      "professorName": "Arq. Claudia Morales Prado",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "08:30",
+          "end": "10:45",
+          "room": "E-213"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 36
+    },
+    {
+      "code": "34088",
+      "courseCode": "1I05N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-22",
+      "professorName": "Ing. Daniel Vargas Inga",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "10:15",
+          "end": "12:30",
+          "room": "C-104"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 40
+    },
+    {
+      "code": "41721",
+      "courseCode": "1I05N",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-23",
+      "professorName": "Arq. Claudia Morales Prado",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "17:15",
+          "end": "19:30",
+          "room": "B-203"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 42
+    },
+    {
+      "code": "43903",
+      "courseCode": "1I05N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-22",
+      "professorName": "Ing. Daniel Vargas Inga",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "17:15",
+          "end": "19:30",
+          "room": "E-108"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 36
+    },
+    {
+      "code": "40686",
+      "courseCode": "1I07N",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-14",
+      "professorName": "Ing. Óscar Medina Flores",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "C-112"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 10
+    },
+    {
+      "code": "48015",
+      "courseCode": "1I07N",
+      "shift": "NOCHE",
+      "modality": "VIRTUAL",
+      "professorId": "doc-13",
+      "professorName": "Mg. Karen Villanueva Díaz",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "C-610"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 29
+    },
+    {
+      "code": "37527",
+      "courseCode": "1I07N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-12",
+      "professorName": "Ing. Luis Herrera Mamani",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "C-108"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 33
+    },
+    {
+      "code": "32144",
+      "courseCode": "1I07N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-14",
+      "professorName": "Ing. Óscar Medina Flores",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "C-413"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 21
+    },
+    {
+      "code": "39518",
+      "courseCode": "1I07N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-13",
+      "professorName": "Mg. Karen Villanueva Díaz",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "E-409"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 16
+    },
+    {
+      "code": "30343",
+      "courseCode": "1I07N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-12",
+      "professorName": "Ing. Luis Herrera Mamani",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "13:45",
+          "end": "15:15",
+          "room": "C-108"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 7
+    },
+    {
+      "code": "35201",
+      "courseCode": "1I07N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-14",
+      "professorName": "Ing. Óscar Medina Flores",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "07:00",
+          "end": "08:30",
+          "room": "A-112"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 24
+    },
+    {
+      "code": "42761",
+      "courseCode": "1I07N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-13",
+      "professorName": "Mg. Karen Villanueva Díaz",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "15:30",
+          "end": "17:00",
+          "room": "B-104"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 33
+    },
+    {
+      "code": "46572",
+      "courseCode": "1I0N3",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-15",
+      "professorName": "Dr. Alberto Núñez Cárdenas",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "B-311"
+        },
+        {
+          "day": "VIE",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "B-311"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 40
+    },
+    {
+      "code": "35249",
+      "courseCode": "1I0N3",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-17",
+      "professorName": "Lic. Fernando Cruz Aguilar",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "B-503"
+        },
+        {
+          "day": "MIE",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "B-503"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 9
+    },
+    {
+      "code": "36822",
+      "courseCode": "1I0N3",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-18",
+      "professorName": "Mg. Gabriela Ortiz Benites",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "C-610"
+        },
+        {
+          "day": "VIE",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "C-610"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 24
+    },
+    {
+      "code": "32331",
+      "courseCode": "1I0N3",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-15",
+      "professorName": "Dr. Alberto Núñez Cárdenas",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "07:00",
+          "end": "08:30",
+          "room": "E-509"
+        },
+        {
+          "day": "VIE",
+          "start": "07:00",
+          "end": "08:30",
+          "room": "E-509"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 25
+    },
+    {
+      "code": "43789",
+      "courseCode": "1I0N3",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-17",
+      "professorName": "Lic. Fernando Cruz Aguilar",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "D-210"
+        },
+        {
+          "day": "JUE",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "D-210"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 15
+    },
+    {
+      "code": "37921",
+      "courseCode": "1I0N3",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-18",
+      "professorName": "Mg. Gabriela Ortiz Benites",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "A-208"
+        },
+        {
+          "day": "MIE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "A-208"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 22
+    },
+    {
+      "code": "33714",
+      "courseCode": "1I0N3",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-15",
+      "professorName": "Dr. Alberto Núñez Cárdenas",
+      "sessions": [
+        {
+          "day": "SAB",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "B-607"
+        },
+        {
+          "day": "LUN",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "B-607"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 32
+    },
+    {
+      "code": "47293",
+      "courseCode": "1Q01G",
+      "shift": "NOCHE",
+      "modality": "VIRTUAL",
+      "professorId": "doc-21",
+      "professorName": "Mg. Verónica León Tapia",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "19:00",
+          "end": "21:15",
+          "room": "A-214"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 24
+    },
+    {
+      "code": "39990",
+      "courseCode": "1Q01G",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-20",
+      "professorName": "Ing. Raúl Sánchez Yupanqui",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "20:45",
+          "end": "23:00",
+          "room": "C-103"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 22
+    },
+    {
+      "code": "44874",
+      "courseCode": "1Q01G",
+      "shift": "NOCHE",
+      "modality": "VIRTUAL",
+      "professorId": "doc-19",
+      "professorName": "Dra. Mónica Espinoza Lara",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "20:45",
+          "end": "23:00",
+          "room": "E-509"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 35
+    },
+    {
+      "code": "41706",
+      "courseCode": "1Q01G",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-21",
+      "professorName": "Mg. Verónica León Tapia",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "10:15",
+          "end": "12:30",
+          "room": "C-312"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 33
+    },
+    {
+      "code": "30633",
+      "courseCode": "1Q01G",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-20",
+      "professorName": "Ing. Raúl Sánchez Yupanqui",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "07:00",
+          "end": "09:15",
+          "room": "C-205"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 27
+    },
+    {
+      "code": "42030",
+      "courseCode": "1Q01G",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-19",
+      "professorName": "Dra. Mónica Espinoza Lara",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "15:30",
+          "end": "17:45",
+          "room": "C-606"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 14
+    },
+    {
+      "code": "30963",
+      "courseCode": "1Q01G",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-21",
+      "professorName": "Mg. Verónica León Tapia",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "08:30",
+          "end": "10:45",
+          "room": "B-615"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 26
+    },
+    {
+      "code": "42249",
+      "courseCode": "1Q01G",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-20",
+      "professorName": "Ing. Raúl Sánchez Yupanqui",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "15:30",
+          "end": "17:45",
+          "room": "C-613"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 40
+    },
+    {
+      "code": "38053",
+      "courseCode": "1Q01G",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-19",
+      "professorName": "Dra. Mónica Espinoza Lara",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "07:00",
+          "end": "09:15",
+          "room": "E-202"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 21
+    },
+    {
+      "code": "38190",
+      "courseCode": "1Q01G",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-21",
+      "professorName": "Mg. Verónica León Tapia",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "17:15",
+          "end": "19:30",
+          "room": "B-108"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 31
+    },
+    {
+      "code": "43291",
+      "courseCode": "1L02Q",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-19",
+      "professorName": "Dra. Mónica Espinoza Lara",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "LAB-1"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 5
+    },
+    {
+      "code": "44359",
+      "courseCode": "1L02Q",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-20",
+      "professorName": "Ing. Raúl Sánchez Yupanqui",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "LAB-1"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 16
+    },
+    {
+      "code": "40855",
+      "courseCode": "1L02Q",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-21",
+      "professorName": "Mg. Verónica León Tapia",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "LAB-3"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 23
+    },
+    {
+      "code": "30655",
+      "courseCode": "1L02Q",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-19",
+      "professorName": "Dra. Mónica Espinoza Lara",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "07:00",
+          "end": "08:30",
+          "room": "LAB-3"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 17
+    },
+    {
+      "code": "35437",
+      "courseCode": "1L02Q",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-20",
+      "professorName": "Ing. Raúl Sánchez Yupanqui",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "LAB-4"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 24
+    },
+    {
+      "code": "42460",
+      "courseCode": "1L02Q",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-21",
+      "professorName": "Mg. Verónica León Tapia",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "LAB-1"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 10
+    },
+    {
+      "code": "49816",
+      "courseCode": "1L02Q",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-19",
+      "professorName": "Dra. Mónica Espinoza Lara",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "08:30",
+          "end": "10:00",
+          "room": "LAB-3"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 18
+    },
+    {
+      "code": "38825",
+      "courseCode": "1L02Q",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-20",
+      "professorName": "Ing. Raúl Sánchez Yupanqui",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "LAB-3"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 13
+    },
+    {
+      "code": "43957",
+      "courseCode": "1L02Q",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-21",
+      "professorName": "Mg. Verónica León Tapia",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "LAB-1"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 8
+    },
+    {
+      "code": "36151",
+      "courseCode": "1L02Q",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-19",
+      "professorName": "Dra. Mónica Espinoza Lara",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "17:15",
+          "end": "18:45",
+          "room": "LAB-2"
+        }
+      ],
+      "capacity": 24,
+      "enrolled": 24
+    },
+    {
+      "code": "38740",
+      "courseCode": "1I04N",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-13",
+      "professorName": "Mg. Karen Villanueva Díaz",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "19:00",
+          "end": "20:30",
+          "room": "A-215"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 7
+    },
+    {
+      "code": "37989",
+      "courseCode": "1I04N",
+      "shift": "NOCHE",
+      "modality": "VIRTUAL",
+      "professorId": "doc-12",
+      "professorName": "Ing. Luis Herrera Mamani",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "20:45",
+          "end": "22:15",
+          "room": "E-301"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 28
+    },
+    {
+      "code": "41236",
+      "courseCode": "1I04N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-14",
+      "professorName": "Ing. Óscar Medina Flores",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "15:30",
+          "end": "17:00",
+          "room": "D-603"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 26
+    },
+    {
+      "code": "46457",
+      "courseCode": "1I04N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-13",
+      "professorName": "Mg. Karen Villanueva Díaz",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "15:30",
+          "end": "17:00",
+          "room": "E-202"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 40
+    },
+    {
+      "code": "40189",
+      "courseCode": "1I04N",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-12",
+      "professorName": "Ing. Luis Herrera Mamani",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "A-611"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 30
+    },
+    {
+      "code": "43548",
+      "courseCode": "1I04N",
+      "shift": "MANANA",
+      "modality": "VIRTUAL",
+      "professorId": "doc-14",
+      "professorName": "Ing. Óscar Medina Flores",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "10:15",
+          "end": "11:45",
+          "room": "C-102"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 11
+    },
+    {
+      "code": "45699",
+      "courseCode": "1I04N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-13",
+      "professorName": "Mg. Karen Villanueva Díaz",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "12:00",
+          "end": "13:30",
+          "room": "C-201"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 9
+    },
+    {
+      "code": "43832",
+      "courseCode": "1I04N",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-12",
+      "professorName": "Ing. Luis Herrera Mamani",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "13:45",
+          "end": "15:15",
+          "room": "B-607"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 25
+    },
+    {
+      "code": "37026",
+      "courseCode": "1S10L",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-24",
+      "professorName": "Mg. Hugo Cabrera Salas",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "19:00",
+          "end": "21:15",
+          "room": "A-313"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 33
+    },
+    {
+      "code": "43242",
+      "courseCode": "1S10L",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-25",
+      "professorName": "Mg. Natalia Ruiz Delgado",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "19:00",
+          "end": "21:15",
+          "room": "D-505"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 32
+    },
+    {
+      "code": "45791",
+      "courseCode": "1S10L",
+      "shift": "NOCHE",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-24",
+      "professorName": "Mg. Hugo Cabrera Salas",
+      "sessions": [
+        {
+          "day": "LUN",
+          "start": "20:45",
+          "end": "23:00",
+          "room": "A-412"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 27
+    },
+    {
+      "code": "30405",
+      "courseCode": "1S10L",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-25",
+      "professorName": "Mg. Natalia Ruiz Delgado",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "10:15",
+          "end": "12:30",
+          "room": "E-212"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 21
+    },
+    {
+      "code": "34120",
+      "courseCode": "1S10L",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-24",
+      "professorName": "Mg. Hugo Cabrera Salas",
+      "sessions": [
+        {
+          "day": "MAR",
+          "start": "08:30",
+          "end": "10:45",
+          "room": "A-212"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 16
+    },
+    {
+      "code": "33986",
+      "courseCode": "1S10L",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-25",
+      "professorName": "Mg. Natalia Ruiz Delgado",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "10:15",
+          "end": "12:30",
+          "room": "C-304"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 8
+    },
+    {
+      "code": "33406",
+      "courseCode": "1S10L",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-24",
+      "professorName": "Mg. Hugo Cabrera Salas",
+      "sessions": [
+        {
+          "day": "MIE",
+          "start": "17:15",
+          "end": "19:30",
+          "room": "B-404"
+        }
+      ],
+      "capacity": 45,
+      "enrolled": 32
+    },
+    {
+      "code": "32769",
+      "courseCode": "1S10L",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-25",
+      "professorName": "Mg. Natalia Ruiz Delgado",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "10:15",
+          "end": "12:30",
+          "room": "D-615"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 17
+    },
+    {
+      "code": "44970",
+      "courseCode": "1S10L",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-24",
+      "professorName": "Mg. Hugo Cabrera Salas",
+      "sessions": [
+        {
+          "day": "JUE",
+          "start": "13:45",
+          "end": "16:00",
+          "room": "D-306"
+        }
+      ],
+      "capacity": 35,
+      "enrolled": 21
+    },
+    {
+      "code": "47508",
+      "courseCode": "1S10L",
+      "shift": "MANANA",
+      "modality": "PRESENCIAL",
+      "professorId": "doc-25",
+      "professorName": "Mg. Natalia Ruiz Delgado",
+      "sessions": [
+        {
+          "day": "VIE",
+          "start": "08:30",
+          "end": "10:45",
+          "room": "A-305"
+        }
+      ],
+      "capacity": 40,
+      "enrolled": 8
+    }
+  ],
+  "professors": [
+    {
+      "id": "doc-01",
+      "name": "Mg. Rosa Quispe Huamán",
+      "department": "Humanidades"
+    },
+    {
+      "id": "doc-02",
+      "name": "Lic. Carlos Mendoza Ríos",
+      "department": "Humanidades"
+    },
+    {
+      "id": "doc-03",
+      "name": "Mg. Patricia Salazar Vega",
+      "department": "Humanidades"
+    },
+    {
+      "id": "doc-04",
+      "name": "Lic. Jorge Alvarado Paz",
+      "department": "Humanidades"
+    },
+    {
+      "id": "doc-05",
+      "name": "Lic. Andrea Torres Lazo",
+      "department": "Idiomas"
+    },
+    {
+      "id": "doc-06",
+      "name": "Lic. Kevin Ramírez Soto",
+      "department": "Idiomas"
+    },
+    {
+      "id": "doc-07",
+      "name": "Mg. Lucía Fernández Ccori",
+      "department": "Idiomas"
+    },
+    {
+      "id": "doc-08",
+      "name": "Ing. Miguel Castillo Rojas",
+      "department": "Ingeniería Industrial"
+    },
+    {
+      "id": "doc-09",
+      "name": "Mg. Diana Paredes Luna",
+      "department": "Ingeniería Industrial"
+    },
+    {
+      "id": "doc-10",
+      "name": "Ing. Renzo Gutiérrez Chávez",
+      "department": "Ingeniería Industrial"
+    },
+    {
+      "id": "doc-11",
+      "name": "Mg. Silvia Campos Arce",
+      "department": "Ingeniería Industrial"
+    },
+    {
+      "id": "doc-12",
+      "name": "Ing. Luis Herrera Mamani",
+      "department": "Computación"
+    },
+    {
+      "id": "doc-13",
+      "name": "Mg. Karen Villanueva Díaz",
+      "department": "Computación"
+    },
+    {
+      "id": "doc-14",
+      "name": "Ing. Óscar Medina Flores",
+      "department": "Computación"
+    },
+    {
+      "id": "doc-15",
+      "name": "Dr. Alberto Núñez Cárdenas",
+      "department": "Ciencias Básicas"
+    },
+    {
+      "id": "doc-16",
+      "name": "Mg. Elena Rojas Palomino",
+      "department": "Ciencias Básicas"
+    },
+    {
+      "id": "doc-17",
+      "name": "Lic. Fernando Cruz Aguilar",
+      "department": "Ciencias Básicas"
+    },
+    {
+      "id": "doc-18",
+      "name": "Mg. Gabriela Ortiz Benites",
+      "department": "Ciencias Básicas"
+    },
+    {
+      "id": "doc-19",
+      "name": "Dra. Mónica Espinoza Lara",
+      "department": "Química"
+    },
+    {
+      "id": "doc-20",
+      "name": "Ing. Raúl Sánchez Yupanqui",
+      "department": "Química"
+    },
+    {
+      "id": "doc-21",
+      "name": "Mg. Verónica León Tapia",
+      "department": "Química"
+    },
+    {
+      "id": "doc-22",
+      "name": "Ing. Daniel Vargas Inga",
+      "department": "Dibujo y Diseño"
+    },
+    {
+      "id": "doc-23",
+      "name": "Arq. Claudia Morales Prado",
+      "department": "Dibujo y Diseño"
+    },
+    {
+      "id": "doc-24",
+      "name": "Mg. Hugo Cabrera Salas",
+      "department": "Economía"
+    },
+    {
+      "id": "doc-25",
+      "name": "Mg. Natalia Ruiz Delgado",
+      "department": "Economía"
+    }
+  ]
+}

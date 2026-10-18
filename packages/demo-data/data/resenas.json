@@ -1,0 +1,2517 @@
+[
+  {
+    "id": "rev-001",
+    "professorId": "doc-01",
+    "courseCode": "1X101",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Responde los correos rápido y da retroalimentación en cada entrega.",
+    "tags": [
+      "Clases dinámicas",
+      "Muy paciente"
+    ],
+    "createdAt": "2026-12-20T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-002",
+    "professorId": "doc-01",
+    "courseCode": "1VU01",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Justo al calificar"
+    ],
+    "createdAt": "2025-11-18T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-003",
+    "professorId": "doc-01",
+    "courseCode": "1X101",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2025-05-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-004",
+    "professorId": "doc-01",
+    "courseCode": "1X101",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Justo al calificar"
+    ],
+    "createdAt": "2026-11-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-005",
+    "professorId": "doc-01",
+    "courseCode": "1VU01",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2025-05-28T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-006",
+    "professorId": "doc-01",
+    "courseCode": "1X101",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Responde los correos rápido y da retroalimentación en cada entrega.",
+    "tags": [
+      "Explica bien"
+    ],
+    "createdAt": "2025-09-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-007",
+    "professorId": "doc-01",
+    "courseCode": "1N07C",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2026-04-08T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-008",
+    "professorId": "doc-01",
+    "courseCode": "1X101",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2026-12-12T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-009",
+    "professorId": "doc-02",
+    "courseCode": "1N07C",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Rúbricas estrictas",
+      "Exigente"
+    ],
+    "createdAt": "2025-09-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-010",
+    "professorId": "doc-02",
+    "courseCode": "1X101",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-10-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-011",
+    "professorId": "doc-02",
+    "courseCode": "1X101",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2025-10-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-012",
+    "professorId": "doc-02",
+    "courseCode": "1VU01",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Las clases son algo monótonas, aunque los exámenes son coherentes con lo enseñado.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2026-12-07T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-013",
+    "professorId": "doc-02",
+    "courseCode": "1VU01",
+    "term": "2026-2",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Mucha teoría",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-10-27T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-014",
+    "professorId": "doc-02",
+    "courseCode": "1VU01",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Mucha teoría",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2025-09-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-015",
+    "professorId": "doc-02",
+    "courseCode": "1N07C",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Avanza rápido",
+      "Mucha teoría"
+    ],
+    "createdAt": "2026-09-02T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-016",
+    "professorId": "doc-02",
+    "courseCode": "1VU01",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Avanza rápido"
+    ],
+    "createdAt": "2025-05-17T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-017",
+    "professorId": "doc-02",
+    "courseCode": "1N07C",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2025-07-07T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-018",
+    "professorId": "doc-03",
+    "courseCode": "1VU01",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Exigente",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2025-09-16T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-019",
+    "professorId": "doc-03",
+    "courseCode": "1VU01",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2025-05-20T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-020",
+    "professorId": "doc-03",
+    "courseCode": "1N07C",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Avanza rápido",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2026-05-02T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-021",
+    "professorId": "doc-03",
+    "courseCode": "1VU01",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Mucha teoría",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2026-12-12T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-022",
+    "professorId": "doc-03",
+    "courseCode": "1VU01",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Las clases son algo monótonas, aunque los exámenes son coherentes con lo enseñado.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2026-10-02T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-023",
+    "professorId": "doc-04",
+    "courseCode": "1X101",
+    "term": "2026-1",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2026-07-14T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-024",
+    "professorId": "doc-04",
+    "courseCode": "1X101",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Puntual",
+      "Muy paciente"
+    ],
+    "createdAt": "2026-11-27T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-025",
+    "professorId": "doc-04",
+    "courseCode": "1N07C",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Explica bien"
+    ],
+    "createdAt": "2026-09-04T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-026",
+    "professorId": "doc-04",
+    "courseCode": "1X101",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Clases dinámicas",
+      "Explica bien"
+    ],
+    "createdAt": "2025-09-22T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-027",
+    "professorId": "doc-04",
+    "courseCode": "1VU01",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Mucha teoría",
+      "Avanza rápido"
+    ],
+    "createdAt": "2025-04-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-028",
+    "professorId": "doc-04",
+    "courseCode": "1X101",
+    "term": "2026-1",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2026-07-20T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-029",
+    "professorId": "doc-04",
+    "courseCode": "1N07C",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Explica bien"
+    ],
+    "createdAt": "2025-07-10T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-030",
+    "professorId": "doc-04",
+    "courseCode": "1N07C",
+    "term": "2026-1",
+    "clarity": 5,
+    "rigor": 2,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Buen material",
+      "Muy paciente"
+    ],
+    "createdAt": "2026-07-16T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-031",
+    "professorId": "doc-04",
+    "courseCode": "1X101",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Justo al calificar"
+    ],
+    "createdAt": "2026-10-22T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-032",
+    "professorId": "doc-05",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Exigente",
+      "Mucha teoría"
+    ],
+    "createdAt": "2025-04-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-033",
+    "professorId": "doc-05",
+    "courseCode": "1N03I",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Las clases son algo monótonas, aunque los exámenes son coherentes con lo enseñado.",
+    "tags": [
+      "Avanza rápido"
+    ],
+    "createdAt": "2025-09-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-034",
+    "professorId": "doc-05",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2025-06-01T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-035",
+    "professorId": "doc-05",
+    "courseCode": "1N03I",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 2,
+    "wouldRecommend": true,
+    "comment": "Los exámenes no tienen relación con lo que se ve en clase.",
+    "tags": [
+      "Difícil de seguir"
+    ],
+    "createdAt": "2025-10-20T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-036",
+    "professorId": "doc-05",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Rúbricas estrictas",
+      "Exigente"
+    ],
+    "createdAt": "2025-04-17T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-037",
+    "professorId": "doc-06",
+    "courseCode": "1N03I",
+    "term": "2026-1",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Buen material",
+      "Puntual"
+    ],
+    "createdAt": "2026-06-28T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-038",
+    "professorId": "doc-06",
+    "courseCode": "1N03I",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2025-12-01T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-039",
+    "professorId": "doc-06",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Avanza rápido"
+    ],
+    "createdAt": "2025-04-14T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-040",
+    "professorId": "doc-06",
+    "courseCode": "1N03I",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 5,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Responde los correos rápido y da retroalimentación en cada entrega.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2026-09-25T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-041",
+    "professorId": "doc-06",
+    "courseCode": "1N03I",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Puntual",
+      "Buen material"
+    ],
+    "createdAt": "2025-09-03T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-042",
+    "professorId": "doc-06",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Avanza rápido"
+    ],
+    "createdAt": "2025-06-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-043",
+    "professorId": "doc-06",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Buen material",
+      "Justo al calificar"
+    ],
+    "createdAt": "2025-04-10T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-044",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Avanza rápido"
+    ],
+    "createdAt": "2025-05-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-045",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2026-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Mucha teoría",
+      "Exigente"
+    ],
+    "createdAt": "2026-07-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-046",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Mucha teoría",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-09-19T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-047",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Rúbricas estrictas",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-06-16T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-048",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2026-1",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Las clases son algo monótonas, aunque los exámenes son coherentes con lo enseñado.",
+    "tags": [
+      "Exigente",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2026-05-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-049",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2025-05-16T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-050",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Exigente",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-12-21T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-051",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Responde los correos rápido y da retroalimentación en cada entrega.",
+    "tags": [
+      "Clases dinámicas"
+    ],
+    "createdAt": "2025-09-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-052",
+    "professorId": "doc-07",
+    "courseCode": "1N03I",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Avanza rápido",
+      "Exigente"
+    ],
+    "createdAt": "2026-12-17T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-053",
+    "professorId": "doc-08",
+    "courseCode": "1IN06",
+    "term": "2025-1",
+    "clarity": 5,
+    "rigor": 2,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": false,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Muy paciente",
+      "Explica bien"
+    ],
+    "createdAt": "2025-06-17T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-054",
+    "professorId": "doc-08",
+    "courseCode": "1IN06",
+    "term": "2025-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Buen material"
+    ],
+    "createdAt": "2025-12-25T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-055",
+    "professorId": "doc-08",
+    "courseCode": "1IN06",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Justo al calificar",
+      "Muy paciente"
+    ],
+    "createdAt": "2025-09-02T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-056",
+    "professorId": "doc-08",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Buen material"
+    ],
+    "createdAt": "2026-12-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-057",
+    "professorId": "doc-08",
+    "courseCode": "1IN06",
+    "term": "2026-1",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2026-07-21T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-058",
+    "professorId": "doc-08",
+    "courseCode": "1IN06",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Buen material"
+    ],
+    "createdAt": "2025-04-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-059",
+    "professorId": "doc-08",
+    "courseCode": "1IN06",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Clases dinámicas",
+      "Justo al calificar"
+    ],
+    "createdAt": "2025-07-12T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-060",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Responde los correos rápido y da retroalimentación en cada entrega.",
+    "tags": [
+      "Explica bien",
+      "Buen material"
+    ],
+    "createdAt": "2026-11-19T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-061",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Justo al calificar",
+      "Muy paciente"
+    ],
+    "createdAt": "2026-12-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-062",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2025-1",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Explica bien",
+      "Justo al calificar"
+    ],
+    "createdAt": "2025-05-17T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-063",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2025-1",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2025-06-08T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-064",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2026-1",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Buen material",
+      "Clases dinámicas"
+    ],
+    "createdAt": "2026-06-02T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-065",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Puntual",
+      "Clases dinámicas"
+    ],
+    "createdAt": "2026-12-14T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-066",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Explica bien"
+    ],
+    "createdAt": "2026-09-02T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-067",
+    "professorId": "doc-09",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Justo al calificar"
+    ],
+    "createdAt": "2026-10-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-068",
+    "professorId": "doc-10",
+    "courseCode": "1IN06",
+    "term": "2026-1",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Muy paciente",
+      "Puntual"
+    ],
+    "createdAt": "2026-07-23T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-069",
+    "professorId": "doc-10",
+    "courseCode": "1IN06",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Muy paciente",
+      "Clases dinámicas"
+    ],
+    "createdAt": "2025-10-26T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-070",
+    "professorId": "doc-10",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Muy paciente",
+      "Puntual"
+    ],
+    "createdAt": "2026-09-26T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-071",
+    "professorId": "doc-10",
+    "courseCode": "1IN06",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Explica bien",
+      "Puntual"
+    ],
+    "createdAt": "2025-12-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-072",
+    "professorId": "doc-10",
+    "courseCode": "1IN06",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2025-12-16T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-073",
+    "professorId": "doc-11",
+    "courseCode": "1IN06",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Exigente",
+      "Mucha teoría"
+    ],
+    "createdAt": "2025-04-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-074",
+    "professorId": "doc-11",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Las clases son algo monótonas, aunque los exámenes son coherentes con lo enseñado.",
+    "tags": [
+      "Rúbricas estrictas",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-09-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-075",
+    "professorId": "doc-11",
+    "courseCode": "1IN06",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2026-10-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-076",
+    "professorId": "doc-11",
+    "courseCode": "1IN06",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2026-05-09T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-077",
+    "professorId": "doc-12",
+    "courseCode": "1I07N",
+    "term": "2026-1",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Clases dinámicas",
+      "Puntual"
+    ],
+    "createdAt": "2026-04-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-078",
+    "professorId": "doc-12",
+    "courseCode": "1I07N",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Buen material"
+    ],
+    "createdAt": "2026-09-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-079",
+    "professorId": "doc-12",
+    "courseCode": "1I07N",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-080",
+    "professorId": "doc-12",
+    "courseCode": "1I04N",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2026-10-27T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-081",
+    "professorId": "doc-13",
+    "courseCode": "1I04N",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-05-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-082",
+    "professorId": "doc-13",
+    "courseCode": "1I04N",
+    "term": "2026-1",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Las clases son algo monótonas, aunque los exámenes son coherentes con lo enseñado.",
+    "tags": [
+      "Exigente",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2026-06-01T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-083",
+    "professorId": "doc-13",
+    "courseCode": "1I07N",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2025-07-20T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-084",
+    "professorId": "doc-13",
+    "courseCode": "1I07N",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Mucha teoría"
+    ],
+    "createdAt": "2025-06-05T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-085",
+    "professorId": "doc-14",
+    "courseCode": "1I07N",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Exámenes difíciles",
+      "Poco puntual"
+    ],
+    "createdAt": "2026-05-10T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-086",
+    "professorId": "doc-14",
+    "courseCode": "1I04N",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 2,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Poco puntual",
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2026-06-02T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-087",
+    "professorId": "doc-14",
+    "courseCode": "1I07N",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 2,
+    "wouldRecommend": true,
+    "comment": "Los exámenes no tienen relación con lo que se ve en clase.",
+    "tags": [
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2025-09-22T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-088",
+    "professorId": "doc-14",
+    "courseCode": "1I04N",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 5,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": true,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Difícil de seguir",
+      "Poco puntual"
+    ],
+    "createdAt": "2025-06-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-089",
+    "professorId": "doc-14",
+    "courseCode": "1I04N",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 2,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Los exámenes no tienen relación con lo que se ve en clase.",
+    "tags": [
+      "Difícil de seguir"
+    ],
+    "createdAt": "2026-11-08T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-090",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 2,
+    "punctuality": 3,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Poca paciencia con las preguntas, el ambiente en clase es tenso.",
+    "tags": [
+      "Poco puntual"
+    ],
+    "createdAt": "2026-07-01T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-091",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2025-2",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 2,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Exámenes difíciles",
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2025-11-03T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-092",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2026-2",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2026-09-18T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-093",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": true,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Poco puntual",
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2026-12-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-094",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 2,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2025-07-26T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-095",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2026-2",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Exámenes difíciles",
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2026-11-23T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-096",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2026-2",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2026-09-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-097",
+    "professorId": "doc-15",
+    "courseCode": "1I0N3",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 2,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Poco puntual"
+    ],
+    "createdAt": "2025-04-21T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-098",
+    "professorId": "doc-17",
+    "courseCode": "1I0N3",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 5,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2026-10-04T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-099",
+    "professorId": "doc-17",
+    "courseCode": "1I0N3",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 5,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Explica bien"
+    ],
+    "createdAt": "2026-11-05T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-100",
+    "professorId": "doc-17",
+    "courseCode": "1I0N3",
+    "term": "2025-1",
+    "clarity": 5,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2025-07-10T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-101",
+    "professorId": "doc-17",
+    "courseCode": "1I0N3",
+    "term": "2025-2",
+    "clarity": 5,
+    "rigor": 5,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Puntual",
+      "Explica bien"
+    ],
+    "createdAt": "2025-12-19T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-102",
+    "professorId": "doc-18",
+    "courseCode": "1I0N3",
+    "term": "2026-1",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Difícil de seguir",
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2026-05-12T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-103",
+    "professorId": "doc-18",
+    "courseCode": "1I0N3",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Rúbricas estrictas",
+      "Exigente"
+    ],
+    "createdAt": "2025-11-27T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-104",
+    "professorId": "doc-18",
+    "courseCode": "1I0N3",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Las clases son algo monótonas, aunque los exámenes son coherentes con lo enseñado.",
+    "tags": [
+      "Exigente",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-10-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-105",
+    "professorId": "doc-18",
+    "courseCode": "1I0N3",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 2,
+    "punctuality": 4,
+    "treatment": 2,
+    "wouldRecommend": true,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2025-12-10T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-106",
+    "professorId": "doc-18",
+    "courseCode": "1I0N3",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 2,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2025-12-14T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-107",
+    "professorId": "doc-19",
+    "courseCode": "1Q01G",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 5,
+    "punctuality": 2,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Poca paciencia con las preguntas, el ambiente en clase es tenso.",
+    "tags": [
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2025-05-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-108",
+    "professorId": "doc-19",
+    "courseCode": "1L02Q",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Rúbricas estrictas",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-11-28T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-109",
+    "professorId": "doc-19",
+    "courseCode": "1L02Q",
+    "term": "2025-2",
+    "clarity": 2,
+    "rigor": 5,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Difícil de seguir",
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2025-10-28T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-110",
+    "professorId": "doc-19",
+    "courseCode": "1L02Q",
+    "term": "2025-2",
+    "clarity": 2,
+    "rigor": 4,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Exámenes difíciles",
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2025-09-25T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-111",
+    "professorId": "doc-20",
+    "courseCode": "1L02Q",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Mucha teoría",
+      "Exigente"
+    ],
+    "createdAt": "2026-07-14T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-112",
+    "professorId": "doc-20",
+    "courseCode": "1L02Q",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Rúbricas estrictas",
+      "Avanza rápido"
+    ],
+    "createdAt": "2026-09-07T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-113",
+    "professorId": "doc-20",
+    "courseCode": "1Q01G",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Justo al calificar",
+      "Explica bien"
+    ],
+    "createdAt": "2025-12-01T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-114",
+    "professorId": "doc-20",
+    "courseCode": "1Q01G",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2025-06-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-115",
+    "professorId": "doc-20",
+    "courseCode": "1L02Q",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2026-10-26T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-116",
+    "professorId": "doc-20",
+    "courseCode": "1Q01G",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Avanza rápido",
+      "Exigente"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-117",
+    "professorId": "doc-21",
+    "courseCode": "1Q01G",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Poca paciencia con las preguntas, el ambiente en clase es tenso.",
+    "tags": [
+      "Difícil de seguir",
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2025-05-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-118",
+    "professorId": "doc-21",
+    "courseCode": "1L02Q",
+    "term": "2026-1",
+    "clarity": 2,
+    "rigor": 2,
+    "punctuality": 3,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Poca paciencia con las preguntas, el ambiente en clase es tenso.",
+    "tags": [
+      "Poco puntual"
+    ],
+    "createdAt": "2026-07-19T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-119",
+    "professorId": "doc-21",
+    "courseCode": "1Q01G",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 2,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Los exámenes no tienen relación con lo que se ve en clase.",
+    "tags": [
+      "Poca retroalimentación",
+      "Poco puntual"
+    ],
+    "createdAt": "2025-07-09T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-120",
+    "professorId": "doc-21",
+    "courseCode": "1L02Q",
+    "term": "2025-1",
+    "clarity": 2,
+    "rigor": 2,
+    "punctuality": 3,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Poca retroalimentación",
+      "Difícil de seguir"
+    ],
+    "createdAt": "2025-05-06T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-121",
+    "professorId": "doc-22",
+    "courseCode": "1I05N",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Avanza rápido",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2025-12-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-122",
+    "professorId": "doc-22",
+    "courseCode": "1I05N",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 3,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Poco puntual"
+    ],
+    "createdAt": "2025-10-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-123",
+    "professorId": "doc-22",
+    "courseCode": "1I05N",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Difícil de seguir",
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2025-04-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-124",
+    "professorId": "doc-22",
+    "courseCode": "1I05N",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 2,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2026-04-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-125",
+    "professorId": "doc-22",
+    "courseCode": "1I05N",
+    "term": "2026-1",
+    "clarity": 2,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Poca paciencia con las preguntas, el ambiente en clase es tenso.",
+    "tags": [
+      "Poco puntual",
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2026-05-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-126",
+    "professorId": "doc-22",
+    "courseCode": "1I05N",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 5,
+    "punctuality": 2,
+    "treatment": 3,
+    "wouldRecommend": true,
+    "comment": "Los exámenes no tienen relación con lo que se ve en clase.",
+    "tags": [
+      "Difícil de seguir"
+    ],
+    "createdAt": "2025-04-25T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-127",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Sus clases son dinámicas, usa ejemplos reales y se nota que le gusta enseñar.",
+    "tags": [
+      "Explica bien"
+    ],
+    "createdAt": "2026-11-25T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-128",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2025-1",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Clases dinámicas"
+    ],
+    "createdAt": "2025-05-23T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-129",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2025-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Explica con mucha claridad y siempre resuelve dudas al final de la clase.",
+    "tags": [
+      "Puntual"
+    ],
+    "createdAt": "2025-07-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-130",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2026-1",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Puntual",
+      "Muy paciente"
+    ],
+    "createdAt": "2026-05-20T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-131",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2025-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Lo recomiendo totalmente, sus materiales en Canvas son muy completos.",
+    "tags": [
+      "Buen material"
+    ],
+    "createdAt": "2025-10-09T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-132",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2026-2",
+    "clarity": 4,
+    "rigor": 4,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Responde los correos rápido y da retroalimentación en cada entrega.",
+    "tags": [
+      "Muy paciente"
+    ],
+    "createdAt": "2026-12-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-133",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2025-2",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 5,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Muy puntual y organizado, el sílabo se cumple al pie de la letra.",
+    "tags": [
+      "Buen material"
+    ],
+    "createdAt": "2025-12-27T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-134",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2026-2",
+    "clarity": 5,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 4,
+    "wouldRecommend": true,
+    "comment": "Responde los correos rápido y da retroalimentación en cada entrega.",
+    "tags": [
+      "Justo al calificar",
+      "Clases dinámicas"
+    ],
+    "createdAt": "2026-10-09T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-135",
+    "professorId": "doc-23",
+    "courseCode": "1I05N",
+    "term": "2026-1",
+    "clarity": 4,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 5,
+    "wouldRecommend": true,
+    "comment": "Exigente pero justo, si estudias aprendes de verdad.",
+    "tags": [
+      "Clases dinámicas"
+    ],
+    "createdAt": "2026-04-17T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-136",
+    "professorId": "doc-24",
+    "courseCode": "1S10L",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 4,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Califica estricto; conviene revisar bien las rúbricas.",
+    "tags": [
+      "Avanza rápido",
+      "Rúbricas estrictas"
+    ],
+    "createdAt": "2026-12-16T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-137",
+    "professorId": "doc-24",
+    "courseCode": "1S10L",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 4,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Sabe mucho del curso, pero a veces avanza muy rápido.",
+    "tags": [
+      "Mucha teoría"
+    ],
+    "createdAt": "2025-12-15T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-138",
+    "professorId": "doc-24",
+    "courseCode": "1S10L",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Exigente"
+    ],
+    "createdAt": "2026-10-20T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-139",
+    "professorId": "doc-24",
+    "courseCode": "1S10L",
+    "term": "2025-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Mucha teoría",
+      "Exigente"
+    ],
+    "createdAt": "2025-09-11T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-140",
+    "professorId": "doc-24",
+    "courseCode": "1S10L",
+    "term": "2026-2",
+    "clarity": 2,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cancela clases sin avisar y demora mucho en subir notas.",
+    "tags": [
+      "Difícil de seguir"
+    ],
+    "createdAt": "2026-11-13T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-141",
+    "professorId": "doc-25",
+    "courseCode": "1S10L",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 4,
+    "wouldRecommend": false,
+    "comment": "Cumple, aunque podría usar más ejemplos prácticos.",
+    "tags": [
+      "Mucha teoría"
+    ],
+    "createdAt": "2026-12-24T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-142",
+    "professorId": "doc-25",
+    "courseCode": "1S10L",
+    "term": "2026-2",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 2,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Cuesta seguirle el ritmo y casi no resuelve dudas.",
+    "tags": [
+      "Poco puntual",
+      "Exámenes difíciles"
+    ],
+    "createdAt": "2026-09-12T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-143",
+    "professorId": "doc-25",
+    "courseCode": "1S10L",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 3,
+    "punctuality": 3,
+    "treatment": 2,
+    "wouldRecommend": false,
+    "comment": "Poca paciencia con las preguntas, el ambiente en clase es tenso.",
+    "tags": [
+      "Poca retroalimentación"
+    ],
+    "createdAt": "2026-04-10T12:00:00.000Z",
+    "demo": true
+  },
+  {
+    "id": "rev-144",
+    "professorId": "doc-25",
+    "courseCode": "1S10L",
+    "term": "2026-1",
+    "clarity": 3,
+    "rigor": 4,
+    "punctuality": 3,
+    "treatment": 3,
+    "wouldRecommend": false,
+    "comment": "Buena persona, pero llega tarde con frecuencia.",
+    "tags": [
+      "Mucha teoría"
+    ],
+    "createdAt": "2026-05-12T12:00:00.000Z",
+    "demo": true
+  }
+]
