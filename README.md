@@ -62,7 +62,7 @@ apps/
 packages/
   shared/       Tipos y esquemas Zod: el contrato entre todas las apps
   demo-data/    Oferta y reseñas de simulación (generadas con semilla fija)
-  scheduler/    (fase 5) generador de horarios
+  scheduler/    Generador de horarios (búsqueda con poda + mejora local)
 ```
 
 ### Contrato de datos (`packages/shared`)
@@ -86,10 +86,18 @@ Todas las apps usan los mismos tipos: `Course`, `Section` (con varias `sessions`
 | `/horario` | Grilla semanal con horas reales y lista de cursos elegidos |
 | `/profesores` y `/profesores/:id` | Ranking, detalle por criterio, reseñas y formulario para escribir una |
 | `/recomendaciones` | Mejores secciones por curso y "Aplicar recomendación" (sin cruces, hasta 22 créditos) |
-| `/generador` | Fase 5: asistente de preferencias |
+| `/generador` | Asistente de 4 pasos (turno, trabajo, límites, resumen) y las 3 mejores opciones de horario |
 
 - Estado en `src/store/` (Zustand, guardado en el navegador): oferta, horario elegido y reseñas propias.
 - La nota de cada docente se calcula en `packages/shared/src/ratings.ts` con un promedio bayesiano: con pocas reseñas se acerca al promedio general.
+
+### Generador (`packages/scheduler`)
+
+- `generate()` recibe la oferta, las notas de los docentes y las preferencias del asistente, y devuelve las 3 mejores combinaciones distintas.
+- Filtros duros: vacantes, turnos elegidos, días libres, horas de trabajo (con el margen para llegar), máximo de cursos, 22 créditos y presupuesto (créditos × precio por crédito).
+- Orden de prioridad: cursos repetidos, más cursos, obligatorios antes que electivos y, al final, un puntaje que mezcla la nota de los docentes con la comodidad (menos días y menos horas muertas) según lo que elija el estudiante.
+- Busca una vez por cada combinación de días de clase y poda las ramas que no pueden ganar; después prueba cambiar secciones sueltas. Si un curso no entra, explica por qué y sugiere qué preferencia aflojar.
+- En la web corre en un Web Worker (`src/generator/`) para no congelar la página.
 
 ### Extensión (`apps/extension`)
 
@@ -113,7 +121,7 @@ Todas las apps usan los mismos tipos: `Course`, `Section` (con varias `sessions`
 | 2 | Extensión que extrae la oferta y la envía | ✅ |
 | 3 | Web migrada: rutas, Tailwind, tema UTP, responsive, datos reales | ✅ |
 | 4 | API + base de datos + reseñas persistentes | ⏳ |
-| 5 | Asistente de preferencias + generador inteligente | ⏳ |
+| 5 | Asistente de preferencias + generador inteligente | ✅ |
 | 6 | Análisis de sentimiento de reseñas | ⏳ |
 
 > El login solo valida el **formato** del correo. No hay contraseña ni verificación real.

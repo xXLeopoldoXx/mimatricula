@@ -1,4 +1,4 @@
-import { DAY_LABEL, DAY_SHORT, to12h, toMinutes, type Day } from "@mimatricula/shared";
+import { DAY_LABEL, DAY_SHORT, to12h, toMinutes, type BusyBlock, type Day } from "@mimatricula/shared";
 import { clashWith, type Chosen } from "../lib/catalog";
 
 const DAYS: Day[] = ["LUN", "MAR", "MIE", "JUE", "VIE", "SAB"];
@@ -19,8 +19,13 @@ export const COURSE_COLORS = [
   "bg-pink-100 border-pink-500 text-pink-950",
 ];
 
-/** Horario semanal con horas reales (minutos). Grilla en escritorio, lista por día en el celular. */
-export default function WeekGrid({ chosen }: { chosen: Chosen[] }) {
+const BUSY_STYLE = "bg-[repeating-linear-gradient(135deg,#e5e7eb_0_6px,#f3f4f6_6px_12px)] border-gray-400 text-gray-700";
+
+/**
+ * Horario semanal con horas reales (minutos). Grilla en escritorio, lista por día en el celular.
+ * `busy` dibuja en gris las horas ocupadas del estudiante (trabajo).
+ */
+export default function WeekGrid({ chosen, busy = [] }: { chosen: Chosen[]; busy?: BusyBlock[] }) {
   const blocks = chosen.flatMap((c, i) =>
     c.section.sessions.map((session) => ({
       ...c,
@@ -31,8 +36,8 @@ export default function WeekGrid({ chosen }: { chosen: Chosen[] }) {
   );
 
   // Rango visible: de la primera a la última clase, redondeado a la hora
-  const starts = blocks.map((b) => toMinutes(b.session.start));
-  const ends = blocks.map((b) => toMinutes(b.session.end));
+  const starts = [...blocks.map((b) => b.session.start), ...busy.map((b) => b.start)].map(toMinutes);
+  const ends = [...blocks.map((b) => b.session.end), ...busy.map((b) => b.end)].map(toMinutes);
   const START = Math.min(8 * 60, Math.floor(Math.min(...starts, 8 * 60) / 60) * 60);
   const END = Math.max(18 * 60, Math.ceil(Math.max(...ends, 18 * 60) / 60) * 60);
   const hours = Array.from({ length: (END - START) / 60 + 1 }, (_, i) => START / 60 + i);
@@ -60,6 +65,20 @@ export default function WeekGrid({ chosen }: { chosen: Chosen[] }) {
               {hours.map((h) => (
                 <div key={h} className="absolute inset-x-0 border-t border-dashed border-utp-line/70" style={{ top: (h * 60 - START) * PX_PER_MIN }} />
               ))}
+              {busy
+                .filter((b) => b.day === d)
+                .map((b, i) => (
+                  <div
+                    key={`busy-${i}`}
+                    className={`absolute inset-x-1 rounded-md border-l-4 px-2 py-1 text-[11px] font-bold ${BUSY_STYLE}`}
+                    style={{
+                      top: (toMinutes(b.start) - START) * PX_PER_MIN,
+                      height: (toMinutes(b.end) - toMinutes(b.start)) * PX_PER_MIN,
+                    }}
+                  >
+                    {b.label} {b.start}–{b.end}
+                  </div>
+                ))}
               {blocks
                 .filter((b) => b.session.day === d)
                 .map((b, i) => (
@@ -89,11 +108,17 @@ export default function WeekGrid({ chosen }: { chosen: Chosen[] }) {
       <div className="flex flex-col gap-4 md:hidden">
         {DAYS.map((d) => {
           const today = blocks.filter((b) => b.session.day === d).sort((a, b) => a.session.start.localeCompare(b.session.start));
-          if (!today.length) return null;
+          const busyToday = busy.filter((b) => b.day === d);
+          if (!today.length && !busyToday.length) return null;
           return (
             <div key={d}>
               <div className="mb-1.5 text-sm font-bold">{DAY_LABEL[d]}</div>
               <ul className="flex flex-col gap-2">
+                {busyToday.map((b, i) => (
+                  <li key={`busy-${i}`} className={`rounded-md border-l-4 px-3 py-2 text-xs font-bold ${BUSY_STYLE}`}>
+                    {b.label} · {to12h(b.start)} – {to12h(b.end)}
+                  </li>
+                ))}
                 {today.map((b, i) => (
                   <li key={i} className={`rounded-md border-l-4 px-3 py-2 text-xs ${b.color} ${b.clash ? "ring-2 ring-utp-red" : ""}`}>
                     <div className="font-bold">{b.course.name}</div>

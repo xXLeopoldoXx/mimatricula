@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { AlertTriangle, BookOpen, CalendarDays, CheckCircle2, Circle, Sparkles, Users } from "lucide-react";
+import { AlertTriangle, BookOpen, CalendarDays, CheckCircle2, Circle, Sparkles, Users, Wand2 } from "lucide-react";
 import type { Student } from "@mimatricula/shared";
 import { clashWith, round2, useCatalog, useChosen, useProfessorStats, MAX_CREDITS } from "../lib/catalog";
 import { useOfferStore } from "../store/offer";
@@ -102,6 +102,12 @@ export default function HomePage({ student }: { student: Student }) {
               className="mt-4 flex items-center justify-center gap-2 rounded-md bg-utp-violet py-2.5 text-sm font-bold text-white hover:bg-utp-violet-dark"
             >
               <Sparkles size={16} /> Ver recomendaciones
+            </Link>
+            <Link
+              to="/generador"
+              className="mt-2 flex items-center justify-center gap-2 rounded-md bg-utp-red py-2.5 text-sm font-bold text-white hover:bg-utp-red-dark"
+            >
+              <Wand2 size={16} /> Generar mi horario
             </Link>
           </section>
 

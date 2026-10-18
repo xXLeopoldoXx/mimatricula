@@ -126,9 +126,13 @@ export const StudentPreferencesSchema = z.object({
   bands: z.array(TimeBandSchema).min(1),
   works: z.boolean(),
   busy: z.array(BusyBlockSchema),
+  /** Minutos de margen antes y después de cada bloque ocupado (para llegar a clase). */
+  bufferMin: z.number().int().min(0).max(120).default(0),
   maxCourses: z.number().int().min(1).max(10),
   /** Presupuesto en soles para créditos; null = sin límite. */
   budgetPen: z.number().positive().nullable(),
+  /** Precio de un crédito en soles (dato de ejemplo, editable). */
+  costPerCreditPen: z.number().positive().default(50),
   /** 0 = solo comodidad de horario, 1 = solo calidad docente. */
   professorWeight: z.number().min(0).max(1),
   freeDays: z.array(DaySchema),
