@@ -19,7 +19,7 @@ export const COURSE_COLORS = [
   "bg-pink-100 border-pink-500 text-pink-950",
 ];
 
-const BUSY_STYLE = "bg-[repeating-linear-gradient(135deg,#e5e7eb_0_6px,#f3f4f6_6px_12px)] border-gray-400 text-gray-700";
+const BUSY_STYLE = "bg-[repeating-linear-gradient(135deg,#e6e8f2_0_6px,#f2f3f9_6px_12px)] border-slate-400 text-slate-700";
 
 /**
  * Horario semanal con horas reales (minutos). Grilla en escritorio, lista por día en el celular.
@@ -45,32 +45,32 @@ export default function WeekGrid({ chosen, busy = [] }: { chosen: Chosen[]; busy
 
   return (
     <>
-      <div className="hidden overflow-x-auto pb-3 md:block">
+      <div className="hidden overflow-x-auto pb-2 md:block">
         <div className="grid min-w-[720px]" style={{ gridTemplateColumns: `56px repeat(${DAYS.length}, 1fr)` }}>
           <div />
           {DAYS.map((d) => (
-            <div key={d} className="border-b border-utp-line pb-2 text-center text-sm font-bold">
+            <div key={d} className="border-utp-line text-utp-ink border-b pb-3 text-center text-sm font-semibold">
               {DAY_LABEL[d]}
             </div>
           ))}
           <div className="relative" style={{ height }}>
             {hours.map((h) => (
-              <div key={h} className="absolute right-2 -translate-y-1/2 text-[11px] text-utp-muted" style={{ top: (h * 60 - START) * PX_PER_MIN }}>
+              <div key={h} className="text-utp-muted absolute right-3 -translate-y-1/2 text-[11px] tabular-nums" style={{ top: (h * 60 - START) * PX_PER_MIN }}>
                 {String(h).padStart(2, "0")}:00
               </div>
             ))}
           </div>
           {DAYS.map((d) => (
-            <div key={d} className="relative border-l border-utp-line" style={{ height }}>
+            <div key={d} className={`border-utp-line relative border-l ${d === "SAB" ? "bg-utp-bg/50" : ""}`} style={{ height }}>
               {hours.map((h) => (
-                <div key={h} className="absolute inset-x-0 border-t border-dashed border-utp-line/70" style={{ top: (h * 60 - START) * PX_PER_MIN }} />
+                <div key={h} className="border-utp-line/80 absolute inset-x-0 border-t" style={{ top: (h * 60 - START) * PX_PER_MIN }} />
               ))}
               {busy
                 .filter((b) => b.day === d)
                 .map((b, i) => (
                   <div
                     key={`busy-${i}`}
-                    className={`absolute inset-x-1 rounded-md border-l-4 px-2 py-1 text-[11px] font-bold ${BUSY_STYLE}`}
+                    className={`absolute inset-x-1 rounded-lg border-l-4 px-2 py-1 text-[11px] font-semibold ${BUSY_STYLE}`}
                     style={{
                       top: (toMinutes(b.start) - START) * PX_PER_MIN,
                       height: (toMinutes(b.end) - toMinutes(b.start)) * PX_PER_MIN,
@@ -84,8 +84,8 @@ export default function WeekGrid({ chosen, busy = [] }: { chosen: Chosen[]; busy
                 .map((b, i) => (
                   <div
                     key={i}
-                    className={`absolute inset-x-1 overflow-hidden rounded-md border-l-4 px-2 py-1 text-[11px] leading-tight ${b.color} ${
-                      b.clash ? "ring-2 ring-utp-red" : ""
+                    className={`absolute inset-x-1 overflow-hidden rounded-lg border-l-4 px-2 py-1.5 text-[11px] leading-tight shadow-sm ${b.color} ${
+                      b.clash ? "ring-utp-red ring-2" : ""
                     }`}
                     style={{
                       top: (toMinutes(b.session.start) - START) * PX_PER_MIN,
@@ -93,8 +93,8 @@ export default function WeekGrid({ chosen, busy = [] }: { chosen: Chosen[]; busy
                     }}
                     title={`${b.course.name} · ${b.section.professorName ?? ""}`}
                   >
-                    <div className="font-bold">{b.course.name}</div>
-                    <div>
+                    <div className="text-xs font-bold">{b.course.name}</div>
+                    <div className="mt-0.5 opacity-80">
                       {b.session.start}–{b.session.end} · {b.session.room}
                     </div>
                     <div className="opacity-80">{b.section.professorName}</div>
@@ -112,15 +112,15 @@ export default function WeekGrid({ chosen, busy = [] }: { chosen: Chosen[]; busy
           if (!today.length && !busyToday.length) return null;
           return (
             <div key={d}>
-              <div className="mb-1.5 text-sm font-bold">{DAY_LABEL[d]}</div>
+              <div className="mb-2 text-sm font-semibold">{DAY_LABEL[d]}</div>
               <ul className="flex flex-col gap-2">
                 {busyToday.map((b, i) => (
-                  <li key={`busy-${i}`} className={`rounded-md border-l-4 px-3 py-2 text-xs font-bold ${BUSY_STYLE}`}>
+                  <li key={`busy-${i}`} className={`rounded-lg border-l-4 px-3 py-2 text-xs font-semibold ${BUSY_STYLE}`}>
                     {b.label} · {to12h(b.start)} – {to12h(b.end)}
                   </li>
                 ))}
                 {today.map((b, i) => (
-                  <li key={i} className={`rounded-md border-l-4 px-3 py-2 text-xs ${b.color} ${b.clash ? "ring-2 ring-utp-red" : ""}`}>
+                  <li key={i} className={`rounded-lg border-l-4 px-3 py-2.5 text-xs ${b.color} ${b.clash ? "ring-utp-red ring-2" : ""}`}>
                     <div className="font-bold">{b.course.name}</div>
                     <div>
                       {DAY_SHORT[d]} {to12h(b.session.start)} – {to12h(b.session.end)} · {b.session.room}

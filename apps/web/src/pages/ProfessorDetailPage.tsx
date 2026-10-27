@@ -5,7 +5,7 @@ import type { Review, Student } from "@mimatricula/shared";
 import { useAllReviews, useCatalog, useChosen, useProfessorStats } from "../lib/catalog";
 import { useMyReviews } from "../store/reviews";
 import NoOffer from "../components/NoOffer";
-import ScoreBadge from "../components/ScoreBadge";
+import { tierOf } from "../components/ScoreBadge";
 import SectionRow from "../components/SectionRow";
 import { StarInput, Stars } from "../components/Stars";
 
@@ -45,9 +45,9 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
   const prof = catalog.professorById.get(id);
   if (!prof) {
     return (
-      <div className="mx-auto max-w-md rounded-xl bg-white p-8 text-center shadow-sm">
+      <div className="card mx-auto max-w-md p-10 text-center">
         <h1 className="text-lg font-bold">No encontramos a este docente en tu oferta</h1>
-        <Link to="/profesores" className="mt-3 inline-block text-sm text-utp-violet underline">
+        <Link to="/profesores" className="btn btn-primary mt-5">
           Ver profesores
         </Link>
       </div>
@@ -58,41 +58,61 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
   const courseCodes = [...new Set(sections.map((x) => x.courseCode))];
 
   return (
-    <div className="mx-auto flex max-w-5xl flex-col gap-5">
-      <Link to="/profesores" className="inline-flex items-center gap-1 text-sm text-utp-violet hover:underline">
-        <ArrowLeft size={16} /> Profesores
+    <div className="mx-auto flex max-w-5xl flex-col gap-6">
+      <Link to="/profesores" className="text-utp-violet inline-flex items-center gap-1.5 self-start text-sm font-semibold hover:underline">
+        <ArrowLeft size={16} /> Volver a profesores
       </Link>
 
-      <section className="grid gap-5 rounded-xl bg-white p-5 shadow-sm md:grid-cols-[1fr_300px] md:p-6">
+      <section className="bg-utp-night hourlines grid gap-8 rounded-3xl p-6 text-white md:grid-cols-[1fr_320px] md:p-10">
         <div>
-          <h1 className="text-2xl font-bold">{prof.name}</h1>
-          <p className="text-sm text-utp-muted">{prof.department}</p>
-          <div className="mt-3">
-            <ScoreBadge stats={s} />
-          </div>
-          {s && (
-            <div className="mt-3 flex flex-wrap gap-1">
-              {s.topTags.map((t) => (
-                <span key={t} className="rounded-full bg-utp-bg px-2 py-0.5 text-xs">
-                  {t}
-                </span>
-              ))}
+          <div className="flex items-center gap-4">
+            <span className="bg-utp-violet flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-xl font-bold">
+              {prof.name
+                .split(" ")
+                .slice(1, 3)
+                .map((w) => w[0])
+                .join("")}
+            </span>
+            <div className="min-w-0">
+              <h1 className="font-display text-3xl leading-tight font-extrabold md:text-4xl">{prof.name}</h1>
+              <p className="mt-1 text-white/65">{prof.department}</p>
             </div>
+          </div>
+          {s ? (
+            <>
+              <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <span className={`font-display rounded-2xl px-4 py-2 text-5xl font-extrabold tabular-nums ${tierOf(s.overall)}`}>{s.overall.toFixed(1)}</span>
+                <div className="space-y-1">
+                  <Stars value={s.overall} size={20} empty="text-white/20" />
+                  <p className="text-sm text-white/70">
+                    {s.count} reseñas, {s.recommendPct}% lo recomienda
+                  </p>
+                </div>
+              </div>
+              {s.topTags.length > 0 && (
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {s.topTags.map((t) => (
+                    <span key={t} className="rounded-full border border-white/15 bg-white/8 px-3 py-1 text-xs font-medium">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            <p className="mt-6 text-white/65">Este docente aún no tiene reseñas. Puedes escribir la primera.</p>
           )}
         </div>
         {s && (
-          <dl className="space-y-2">
+          <dl className="space-y-4 self-end">
             {CRITERIA.map(([k, label]) => (
               <div key={k}>
-                <div className="flex justify-between text-xs">
-                  <dt>{label}</dt>
-                  <dd className="font-bold">{s[k].toFixed(1)}</dd>
+                <div className="flex justify-between text-sm">
+                  <dt className="text-white/75">{label}</dt>
+                  <dd className="font-bold tabular-nums">{s[k].toFixed(1)}</dd>
                 </div>
-                <div className="mt-1 h-2 rounded-full bg-utp-bg">
-                  <div
-                    className={`h-2 rounded-full ${k === "rigor" ? "bg-utp-navy" : "bg-utp-violet"}`}
-                    style={{ width: `${(s[k] / 5) * 100}%` }}
-                  />
+                <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-white/12">
+                  <div className={`h-full rounded-full ${k === "rigor" ? "bg-[#fbbf24]" : "bg-[#8b6dff]"}`} style={{ width: `${(s[k] / 5) * 100}%` }} />
                 </div>
               </div>
             ))}
@@ -100,26 +120,26 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
         )}
       </section>
 
-      <section className="overflow-hidden rounded-xl bg-white shadow-sm">
-        <h2 className="border-b border-utp-line px-4 py-3 font-bold">Secciones que dicta en tu oferta</h2>
-        <div className="divide-y divide-utp-line">
+      <section className="card overflow-hidden">
+        <h2 className="border-utp-line border-b px-5 py-4 text-lg font-bold">Secciones que dicta en tu oferta</h2>
+        <div className="divide-utp-line divide-y">
           {sections.map((x) => (
             <ul key={x.code}>
-              <li className="bg-utp-bg/60 px-4 pt-2 text-xs font-bold text-utp-muted">{catalog.courseByCode.get(x.courseCode)?.name}</li>
+              <li className="bg-utp-bg/70 text-utp-muted px-5 py-2 text-xs font-semibold">{catalog.courseByCode.get(x.courseCode)?.name}</li>
               <SectionRow course={catalog.courseByCode.get(x.courseCode)!} section={x} chosen={chosen} stats={s} />
             </ul>
           ))}
         </div>
       </section>
 
-      <div className="grid gap-5 lg:grid-cols-[1fr_360px]">
-        <section className="rounded-xl bg-white shadow-sm">
-          <h2 className="border-b border-utp-line px-4 py-3 font-bold">Reseñas ({mine.length})</h2>
-          <ul className="divide-y divide-utp-line">
+      <div className="grid items-start gap-6 lg:grid-cols-[1fr_380px]">
+        <section className="card overflow-hidden">
+          <h2 className="border-utp-line border-b px-5 py-4 text-lg font-bold">Reseñas ({mine.length})</h2>
+          <ul className="divide-utp-line divide-y">
             {mine.map((r) => (
               <ReviewItem key={r.id} r={r} courseName={catalog.courseByCode.get(r.courseCode)?.name ?? r.courseCode} />
             ))}
-            {mine.length === 0 && <li className="px-4 py-6 text-center text-sm text-utp-muted">Aún no hay reseñas.</li>}
+            {mine.length === 0 && <li className="text-utp-muted px-5 py-10 text-center text-sm">Aún no hay reseñas. Sé la primera persona en escribir una.</li>}
           </ul>
         </section>
         <ReviewForm professorId={id} courseCodes={courseCodes} catalogCourseName={(c) => catalog.courseByCode.get(c)?.name ?? c} student={student} />
@@ -131,32 +151,32 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
 function ReviewItem({ r, courseName }: { r: Review; courseName: string }) {
   const overall = (r.clarity + r.punctuality + r.treatment) / 3;
   return (
-    <li className="px-4 py-3">
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-utp-muted">
+    <li className="px-5 py-4">
+      <div className="text-utp-muted flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
         <Stars value={overall} size={13} />
         <span>
           {courseName} · {r.term}
         </span>
         {r.wouldRecommend ? (
-          <span className="inline-flex items-center gap-1 text-emerald-700">
+          <span className="text-utp-mint inline-flex items-center gap-1 font-semibold">
             <ThumbsUp size={12} /> Lo recomienda
           </span>
         ) : (
-          <span className="inline-flex items-center gap-1 text-utp-red">
+          <span className="text-utp-red inline-flex items-center gap-1 font-semibold">
             <ThumbsDown size={12} /> No lo recomienda
           </span>
         )}
         {r.demo ? (
-          <span className="rounded bg-utp-bg px-1.5 text-[10px]">DEMO</span>
+          <span className="bg-utp-bg rounded-md px-1.5 py-0.5 text-[10px] font-semibold">Demo</span>
         ) : (
-          <span className="rounded bg-utp-violet-soft px-1.5 text-[10px] text-utp-violet">TUYA</span>
+          <span className="bg-utp-violet-soft text-utp-violet rounded-md px-1.5 py-0.5 text-[10px] font-semibold">Tuya</span>
         )}
       </div>
-      <p className="mt-1 text-sm">{r.comment}</p>
+      <p className="mt-2 text-[15px] leading-relaxed">{r.comment}</p>
       {r.tags.length > 0 && (
-        <div className="mt-1 flex flex-wrap gap-1">
+        <div className="mt-2.5 flex flex-wrap gap-1.5">
           {r.tags.map((t) => (
-            <span key={t} className="rounded-full bg-utp-bg px-2 py-0.5 text-[11px]">
+            <span key={t} className="bg-utp-bg rounded-full px-2.5 py-0.5 text-[11px] font-medium">
               {t}
             </span>
           ))}
@@ -213,22 +233,22 @@ function ReviewForm({
   };
 
   return (
-    <form onSubmit={submit} className="h-fit rounded-xl bg-white p-4 shadow-sm">
-      <h2 className="font-bold">Escribe una reseña</h2>
-      <p className="text-xs text-utp-muted">
+    <form onSubmit={submit} className="card h-fit p-5 lg:sticky lg:top-6">
+      <h2 className="text-lg font-bold">Escribe una reseña</h2>
+      <p className="text-utp-muted mt-1 text-[13px] leading-relaxed">
         {student.name.split(" ")[0]}, tu reseña se muestra de forma anónima para otros estudiantes.
       </p>
 
       {sent && (
-        <p role="status" className="mt-3 rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-900">
-          ✓ ¡Gracias! Tu reseña ya cuenta en la nota del docente.
+        <p role="status" className="bg-utp-mint-soft text-utp-mint mt-4 rounded-xl px-4 py-2.5 text-sm font-medium">
+          Gracias. Tu reseña ya cuenta en la nota del docente.
         </p>
       )}
 
-      <label className="mt-3 block text-sm font-bold" htmlFor="rv-course">
+      <label className="mt-4 block text-sm font-semibold" htmlFor="rv-course">
         Curso
       </label>
-      <select id="rv-course" value={course} onChange={(e) => setCourse(e.target.value)} className="mt-1 w-full rounded-md border border-utp-line bg-white px-2 py-2 text-sm">
+      <select id="rv-course" value={course} onChange={(e) => setCourse(e.target.value)} className="field mt-1.5">
         {courseCodes.map((c) => (
           <option key={c} value={c}>
             {catalogCourseName(c)}
@@ -236,14 +256,14 @@ function ReviewForm({
         ))}
       </select>
 
-      <div className="mt-3 space-y-1">
+      <div className="mt-4 space-y-1">
         {CRITERIA.map(([k, label]) => (
           <StarInput key={k} label={label} value={scores[k]} onChange={(v) => setScores((s) => ({ ...s, [k]: v }))} />
         ))}
       </div>
 
-      <div className="mt-3 text-sm font-bold">¿Lo recomiendas?</div>
-      <div className="mt-1 grid grid-cols-2 gap-2">
+      <div className="mt-4 text-sm font-semibold">¿Lo recomiendas?</div>
+      <div className="mt-1.5 grid grid-cols-2 gap-2">
         {[
           [true, "Sí"],
           [false, "No"],
@@ -252,8 +272,8 @@ function ReviewForm({
             key={String(v)}
             type="button"
             onClick={() => setRecommend(v as boolean)}
-            className={`rounded-md border py-1.5 text-sm font-bold ${
-              recommend === v ? "border-utp-violet bg-utp-violet text-white" : "border-utp-line"
+            className={`rounded-xl border py-2 text-sm font-semibold transition-colors ${
+              recommend === v ? "border-utp-violet bg-utp-violet text-white" : "border-utp-line hover:border-utp-violet/40"
             }`}
           >
             {label as string}
@@ -261,8 +281,8 @@ function ReviewForm({
         ))}
       </div>
 
-      <div className="mt-3 text-sm font-bold">Etiquetas (opcional)</div>
-      <div className="mt-1 flex flex-wrap gap-1">
+      <div className="mt-4 text-sm font-semibold">Etiquetas (opcional, hasta 3)</div>
+      <div className="mt-1.5 flex flex-wrap gap-1.5">
         {TAG_OPTIONS.map((t) => {
           const on = tags.includes(t);
           return (
@@ -271,7 +291,7 @@ function ReviewForm({
               type="button"
               aria-pressed={on}
               onClick={() => setTags((p) => (on ? p.filter((x) => x !== t) : p.length < 3 ? [...p, t] : p))}
-              className={`rounded-full border px-2 py-0.5 text-xs ${on ? "border-utp-violet bg-utp-violet-soft text-utp-violet" : "border-utp-line"}`}
+              className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${on ? "border-utp-violet bg-utp-violet-soft text-utp-violet" : "border-utp-line hover:border-utp-violet/40"}`}
             >
               {t}
             </button>
@@ -279,7 +299,7 @@ function ReviewForm({
         })}
       </div>
 
-      <label className="mt-3 block text-sm font-bold" htmlFor="rv-comment">
+      <label className="mt-4 block text-sm font-semibold" htmlFor="rv-comment">
         Comentario
       </label>
       <textarea
@@ -289,15 +309,15 @@ function ReviewForm({
         maxLength={800}
         rows={4}
         placeholder="¿Cómo explica? ¿Cómo evalúa? ¿Qué debería saber otro estudiante?"
-        className="mt-1 w-full rounded-md border border-utp-line px-3 py-2 text-sm outline-none focus:border-utp-violet"
+        className="field mt-1.5"
       />
 
       {error && (
-        <p role="alert" className="mt-2 text-sm text-utp-red">
+        <p role="alert" className="text-utp-red mt-3 text-sm font-medium">
           {error}
         </p>
       )}
-      <button type="submit" className="mt-3 w-full rounded-md bg-utp-violet py-2 text-sm font-bold text-white hover:bg-utp-violet-dark">
+      <button type="submit" className="btn btn-primary mt-4 w-full">
         Publicar reseña
       </button>
     </form>

@@ -1,28 +1,145 @@
 @import "tailwindcss";
 
-/* Paleta inspirada en el portal UTP (aproximada de capturas; ajustar con la web real) */
+/* Identidad UTP (rojo, violeta, azul noche) llevada a un sistema más sobrio y consistente */
 @theme {
-  --font-sans: "Lato", system-ui, sans-serif;
-  --color-utp-red: #f0384b;
-  --color-utp-red-dark: #d92a3d;
-  --color-utp-violet: #5b36f2;
-  --color-utp-violet-dark: #4524d9;
-  --color-utp-violet-soft: #ece8fe;
-  --color-utp-navy: #1e1b6b;
-  --color-utp-bg: #eef3fa;
+  --color-utp-orange: #ff7a1a;
+  --color-utp-orange-dark: #e8650a;
+  --color-utp-orange-soft: #fff0e0;
+  --color-utp-green: #6cc24a;
+  --color-utp-green-dark: #3f8f1f;
+  --color-utp-green-soft: #eaf7e1;
+
+  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --color-utp-red: #e5383b;
+  --color-utp-red-dark: #c92a2d;
+  --color-utp-violet: #1f4fe0;
+  --color-utp-violet-dark: #163bb5;
+  --color-utp-violet-soft: #e6eeff;
+  --color-utp-navy: #0f2a8f;
+  --color-utp-night: #1740c8;
+  --color-utp-night-2: #1f4fe0;
+  --color-utp-bg: #f3f8ff;
   --color-utp-head: #eaf1fb;
-  --color-utp-line: #dde3ee;
-  --color-utp-ink: #1f2430;
-  --color-utp-muted: #5f6675;
+  --color-utp-line: #dfe8f7;
+  --color-utp-ink: #0e1b4d;
+  --color-utp-muted: #636a85;
   --color-utp-star: #f5a524;
+  --color-utp-mint: #0b7a55;
+  --color-utp-mint-soft: #e3f5ed;
+  --color-utp-amber-soft: #fff4dc;
+
+  --shadow-soft: 0 1px 2px rgb(20 18 63 / 0.05), 0 10px 28px -16px rgb(20 18 63 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(20 18 63 / 0.06), 0 22px 44px -20px rgb(20 18 63 / 0.35);
 }
 
-html,
-body,
-#root {
-  min-height: 100%;
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+  body {
+    @apply bg-utp-bg text-utp-ink font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  button:not(:disabled),
+  [role="button"],
+  select {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-utp-violet);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--color-utp-violet);
+    color: #fff;
+  }
 }
 
-body {
-  @apply bg-utp-bg text-utp-ink font-sans antialiased;
+@layer components {
+  .card {
+    @apply border-utp-line shadow-soft rounded-3xl border bg-white;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all hover:-translate-y-px disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .btn-primary {
+    @apply bg-utp-violet hover:bg-utp-violet-dark text-white;
+  }
+  .btn-accent {
+    @apply bg-utp-orange hover:bg-utp-orange-dark text-white;
+  }
+  .btn-outline {
+    @apply border-utp-line text-utp-ink hover:border-utp-violet/40 hover:bg-utp-violet-soft/60 border bg-white;
+  }
+  .btn-soft {
+    @apply bg-utp-violet-soft text-utp-violet hover:bg-utp-violet/15;
+  }
+  .btn-on-dark {
+    @apply border border-white/20 bg-white/8 text-white hover:bg-white/15;
+  }
+  .field {
+    @apply border-utp-line placeholder:text-utp-muted/70 focus:border-utp-violet focus:ring-utp-violet/15 w-full rounded-2xl border bg-white px-4 py-2.5 text-sm outline-none transition focus:ring-4;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .page-title {
+    @apply font-display text-3xl font-bold tracking-tight md:text-4xl;
+  }
+  .page-lead {
+    @apply text-utp-muted mt-2 max-w-2xl text-[15px] leading-relaxed;
+  }
 }
+
+/* Líneas de hora: el motivo estructural del hero (el tiempo es el contenido de esta app) */
+.hourlines {
+  background-image: repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.055) 0 1px, transparent 1px 48px);
+}
+
+/* Único momento animado de la app: los bloques del mosaico se acomodan al cargar */
+@keyframes block-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.block-in {
+  animation: block-in 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .block-in {
+    animation: none;
+  }
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  .eyebrow { @apply text-utp-orange inline-flex items-center gap-2 text-xs font-extrabold tracking-[0.14em] uppercase; }
+  .wrap { @apply mx-auto w-full max-w-6xl px-4 md:px-8; }
+  .faq summary { @apply flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-bold; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq[open] summary svg { transform: rotate(45deg); }
+}
+.blob { background-image: radial-gradient(45% 55% at 92% 8%, rgb(255 122 26 / 0.5), transparent 70%), radial-gradient(40% 50% at 4% 100%, rgb(108 194 74 / 0.4), transparent 70%), repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.07) 0 1px, transparent 1px 48px); }
