@@ -12,13 +12,35 @@ Proyecto académico (UTP). Este repositorio es un **monorepo**: todas las partes
 
 ```bash
 pnpm install
-pnpm dev          # levanta la web (5173) y el portal ficticio (5174) a la vez
 ```
 
-> En Windows, si `corepack enable` da error de permisos, usa `npx pnpm@10 install` y `npx pnpm@10 dev`.
+Para probar solo la web sin configurar una base de datos, inicia el frontend:
 
-- **MiMatrícula (web):** http://localhost:5173. Ingresa con cualquier nombre y un correo `@utp.edu.pe`. Para cerrar sesión, haz clic en tu avatar.
+```bash
+pnpm dev:web
+```
+
+En desarrollo, el registro y el login usan un modo demo que guarda las cuentas en el almacenamiento local del navegador. La contraseña se guarda como hash, pero **esto no es autenticación segura**: los datos solo existen en ese navegador y pueden modificarse desde las herramientas del navegador. Usa únicamente datos y contraseñas ficticios.
+
+Para activar este modo demo en un build estático publicado, configura `VITE_DEMO_AUTH=true` en el entorno de compilación. No lo dejes activado para una aplicación real.
+
+La autenticación real necesita una base PostgreSQL. Copia `apps/api/.env.example` a `apps/api/.env`, configura `DATABASE_URL` con tu propia base y ejecuta la migración inicial:
+
+```bash
+pnpm --filter api exec prisma migrate dev --name init
+pnpm dev          # levanta la web (5173), el portal ficticio (5174) y el API (4000)
+```
+
+En Windows, si `corepack enable` da error de permisos, usa `npx pnpm@10 install`, `npx pnpm@10 --filter api exec prisma migrate dev --name init` y `npx pnpm@10 dev`.
+
+- **MiMatrícula (web):** http://localhost:5173. Regístrate con nombre y apellido (solo letras), correo con formato `u12345678@utp.edu.pe` y una contraseña de 12 caracteres o más que incluya mayúscula, minúscula, número y símbolo.
+- **API:** http://localhost:4000/api/health
 - **Portal de matrícula ficticio:** http://localhost:5174
+
+Las contraseñas se guardan como hashes Argon2id y las sesiones usan cookies `HttpOnly`; nunca se guarda la contraseña en el navegador. El dominio del correo se valida, pero para comprobar que la persona es dueña de esa dirección se debe configurar un servicio de correo y activar verificación por enlace.
+
+Para producción, el API y PostgreSQL deben estar desplegados y configurados por separado del frontend estático de Vercel. Define `VITE_API_URL` en el frontend y `WEB_ORIGINS` en el API; no subas `.env` ni claves privadas al repositorio.
+Si el API vive en otro dominio, configura `COOKIE_SAME_SITE=none` únicamente con HTTPS y CORS restringido a los dominios reales; es preferible publicar `/api` bajo el mismo origen del frontend para evitar bloqueos de cookies de terceros.
 
 ### Instalar la extensión (Chrome o Edge)
 
@@ -43,6 +65,7 @@ Otros comandos:
 ```bash
 pnpm dev:web       # solo la web
 pnpm dev:portal    # solo el portal ficticio
+pnpm dev:api       # solo el API
 pnpm build:ext     # compila la extensión en apps/extension/.output/chrome-mv3
 pnpm dev:ext       # extensión con recarga automática (abre un Chrome de pruebas)
 pnpm test          # pruebas (Vitest)
@@ -124,4 +147,4 @@ Todas las apps usan los mismos tipos: `Course`, `Section` (con varias `sessions`
 | 5 | Asistente de preferencias + generador inteligente | ✅ |
 | 6 | Análisis de sentimiento de reseñas | ⏳ |
 
-> El login solo valida el **formato** del correo. No hay contraseña ni verificación real.
+> El modo demo valida el correo `@utp.edu.pe` y la contraseña en el navegador, pero no verifica la propiedad del correo ni es seguro para producción. La autenticación real requiere el API y PostgreSQL.

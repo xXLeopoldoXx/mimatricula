@@ -16,10 +16,23 @@ export const NAV = [
   { to: "/generador", label: "Generador de horarios", short: "Generador", icon: Wand2 },
 ] as const;
 
-export default function Layout({ student, onLogout }: { student: Student; onLogout: () => void }) {
+export default function Layout({
+  student,
+  onLogout,
+  authError,
+}: {
+  student: Student;
+  onLogout: () => void | Promise<void>;
+  authError?: string | null;
+}) {
   return (
     <div className="min-h-screen">
       <TopBar student={student} onLogout={onLogout} />
+      {authError && (
+        <p role="alert" className="bg-utp-red/10 text-utp-red-dark px-4 py-2 text-center text-sm font-medium">
+          {authError}
+        </p>
+      )}
       <main className="min-w-0 pb-28 lg:pb-0">
         <ImportedBanner />
         <div className="wrap py-6 md:py-10">
@@ -32,7 +45,7 @@ export default function Layout({ student, onLogout }: { student: Student; onLogo
   );
 }
 
-function TopBar({ student, onLogout }: { student: Student; onLogout: () => void }) {
+function TopBar({ student, onLogout }: { student: Student; onLogout: () => void | Promise<void> }) {
   const [menu, setMenu] = useState(false);
   return (
     <header className="sticky top-0 z-30">

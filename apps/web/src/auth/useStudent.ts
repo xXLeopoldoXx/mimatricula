@@ -1,49 +1,69 @@
-import { useCallback, useState } from "react";
-import { isUtpEmail, studentCodeFromEmail, type Student } from "@mimatricula/shared";
+import { useCallback, useEffect, useState } from "react";
+import type { LoginInput, RegistrationInput, Student } from "@mimatricula/shared";
+import { authApi } from "../lib/authApi";
 
-const KEY = "mimatricula:estudiante";
-
-function load(): Student | null {
-  try {
-    const raw = localStorage.getItem(KEY);
-    return raw ? (JSON.parse(raw) as Student) : null;
-  } catch {
-    return null;
-  }
+function messageFrom(error: unknown): string {
+  return error instanceof Error ? error.message : "Ocurrió un error inesperado.";
 }
 
-/**
- * Sesión de demo guardada en el navegador.
- * Solo valida que el correo sea @utp.edu.pe; no hay contraseña ni verificación real.
- */
 export function useStudent() {
-  const [student, setStudent] = useState<Student | null>(load);
+  const [student, setStudent] = useState<Student | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [sessionError, setSessionError] = useState<string | null>(null);
+  const [authError, setAuthError] = useState<string | null>(null);
 
-  const login = useCallback((email: string, name: string): string | null => {
-    const cleanEmail = email.trim().toLowerCase();
-    const cleanName = name.trim().replace(/\s+/g, " ");
-    if (!isUtpEmail(cleanEmail)) return "Usa tu correo institucional @utp.edu.pe";
-    if (cleanName.length < 2) return "Escribe tu nombre";
-    const s: Student = { email: cleanEmail, name: cleanName, code: studentCodeFromEmail(cleanEmail) };
-    try {
-      localStorage.setItem(KEY, JSON.stringify(s));
-    } catch {
-      /* sin almacenamiento: la sesión dura hasta recargar */
-    }
-    setStudent(s);
-    return null;
+  useEffect(() => {
+    let active = true;
+    authApi
+      .currentStudent()
+      .then((current) => {
+        if (active) setStudent(current);
+      })
+      .catch((error: unknown) => {
+        if (active) setSessionError(messageFrom(error));
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
   }, []);
 
-  const logout = useCallback(() => {
+  const login = useCallback(async (input: LoginInput): Promise<string | null> => {
     try {
-      localStorage.removeItem(KEY);
-    } catch {
-      /* ignorar */
+      setAuthError(null);
+      setStudent(await authApi.login(input));
+      setSessionError(null);
+      return null;
+    } catch (error) {
+      return messageFrom(error);
     }
-    setStudent(null);
   }, []);
 
-  return { student, login, logout };
+  const register = useCallback(async (input: RegistrationInput): Promise<string | null> => {
+    try {
+      setAuthError(null);
+      setStudent(await authApi.register(input));
+      setSessionError(null);
+      return null;
+    } catch (error) {
+      return messageFrom(error);
+    }
+  }, []);
+
+  const logout = useCallback(async () => {
+    setAuthError(null);
+    try {
+      await authApi.logout();
+      setStudent(null);
+    } catch (error) {
+      setAuthError(messageFrom(error));
+    }
+  }, []);
+
+  return { student, loading, sessionError, authError, login, register, logout };
 }
 
 export function initials(name: string): string {

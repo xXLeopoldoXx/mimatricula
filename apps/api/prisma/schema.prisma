@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  name         String
+  code         String?       @unique
+  passwordHash String
+  createdAt    DateTime      @default(now())
+  sessions     AuthSession[]
+}
+
+model AuthSession {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  studentId String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId, expiresAt])
+}
