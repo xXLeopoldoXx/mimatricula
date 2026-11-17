@@ -83,12 +83,15 @@ export default function GeneratorPage() {
   const cheapest = Math.min(...catalog.offer.courses.map((c) => c.credits)) * prefs.costPerCreditPen;
 
   return (
-    <div ref={top} className="mx-auto flex max-w-5xl scroll-mt-24 flex-col gap-4">
+    <div ref={top} className="mx-auto flex max-w-5xl scroll-mt-24 flex-col gap-6">
       <div>
-        <h1 className="flex items-center gap-2 text-2xl font-bold">
-          <Wand2 className="text-utp-violet" /> Generador inteligente
+        <h1 className="page-title flex items-center gap-3">
+          <span className="bg-utp-violet flex h-11 w-11 items-center justify-center rounded-xl text-white">
+            <Wand2 size={22} />
+          </span>
+          Generador de horarios
         </h1>
-        <p className="mt-1 text-sm text-utp-muted">
+        <p className="page-lead">
           Responde con botones y armamos tus mejores horarios sin cruces, con los docentes mejor evaluados.
         </p>
       </div>
@@ -98,23 +101,23 @@ export default function GeneratorPage() {
       {gen.result ? (
         <Results result={gen.result} onEdit={() => go(0)} />
       ) : (
-        <section className="rounded-xl bg-white p-5 shadow-sm md:p-6">
+        <section className="card p-6 md:p-8">
           {step === 0 && <StepShift />}
           {step === 1 && <StepWork />}
           {step === 2 && <StepLimits cheapest={cheapest} />}
           {step === 3 && <StepSummary onEdit={go} />}
 
           {problem && (
-            <p role="alert" className="mt-4 text-sm font-bold text-utp-red">
+            <p role="alert" className="bg-utp-red/8 text-utp-red-dark mt-5 rounded-xl px-4 py-2.5 text-sm font-medium">
               {problem}
             </p>
           )}
 
-          <div className="mt-6 flex items-center justify-between gap-3 border-t border-utp-line pt-4">
+          <div className="border-utp-line mt-8 flex items-center justify-between gap-3 border-t pt-5">
             <button
               onClick={() => go(step - 1)}
               disabled={step === 0}
-              className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-bold text-utp-muted hover:bg-utp-bg disabled:invisible"
+              className="btn text-utp-muted hover:bg-utp-bg disabled:invisible"
             >
               <ChevronLeft size={16} /> Atrás
             </button>
@@ -122,7 +125,7 @@ export default function GeneratorPage() {
               <button
                 onClick={() => go(step + 1)}
                 disabled={!!problem}
-                className="inline-flex items-center gap-1 rounded-md bg-utp-violet px-5 py-2.5 text-sm font-bold text-white hover:bg-utp-violet-dark disabled:opacity-40"
+                className="btn btn-primary px-6"
               >
                 Siguiente <ChevronRight size={16} />
               </button>
@@ -130,7 +133,7 @@ export default function GeneratorPage() {
               <button
                 onClick={generate}
                 disabled={gen.running || !prefs.bands.length}
-                className="inline-flex items-center gap-2 rounded-md bg-utp-red px-5 py-2.5 text-sm font-bold text-white hover:bg-utp-red-dark disabled:opacity-60"
+                className="btn btn-accent px-6"
               >
                 {gen.running ? <Loader2 size={16} className="animate-spin" /> : <Wand2 size={16} />}
                 {gen.running ? "Generando…" : "Generar mis horarios"}
@@ -145,22 +148,27 @@ export default function GeneratorPage() {
 
 function Stepper({ step, onGo }: { step: number; onGo: (n: number) => void }) {
   return (
-    <ol className="grid grid-cols-4 gap-1.5">
+    <ol className="grid grid-cols-4">
       {STEPS.map((label, i) => {
         const done = i < step;
         const active = i === step;
         return (
-          <li key={label}>
+          <li key={label} className="relative">
+            {i > 0 && <span className={`absolute top-4 right-1/2 h-0.5 w-full -translate-y-1/2 ${i <= step ? "bg-utp-violet" : "bg-utp-line"}`} aria-hidden="true" />}
             <button
               onClick={() => onGo(i)}
               disabled={i > step}
               aria-current={active ? "step" : undefined}
-              className="flex w-full flex-col items-center gap-1 text-xs font-bold disabled:cursor-default"
+              className="relative flex w-full flex-col items-center gap-2 text-sm font-semibold disabled:cursor-default"
             >
-              <span className={`h-1.5 w-full rounded-full ${done || active ? "bg-utp-violet" : "bg-utp-line"}`} />
-              <span className={active ? "text-utp-violet" : done ? "text-utp-ink" : "text-utp-muted"}>
-                {i + 1}. {label}
+              <span
+                className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors ${
+                  done ? "bg-utp-violet text-white" : active ? "bg-utp-violet ring-utp-violet/20 text-white ring-4" : "bg-white text-utp-muted border-utp-line border-2"
+                }`}
+              >
+                {done ? <Check size={16} /> : i + 1}
               </span>
+              <span className={active ? "text-utp-violet" : done ? "text-utp-ink" : "text-utp-muted"}>{label}</span>
             </button>
           </li>
         );
@@ -171,10 +179,10 @@ function Stepper({ step, onGo }: { step: number; onGo: (n: number) => void }) {
 
 function Question({ title, hint, children }: { title: string; hint?: string; children: ReactNode }) {
   return (
-    <fieldset className="mb-6 last:mb-0">
-      <legend className="text-lg font-bold">{title}</legend>
-      {hint && <p className="mt-0.5 text-sm text-utp-muted">{hint}</p>}
-      <div className="mt-3">{children}</div>
+    <fieldset className="mb-8 last:mb-0">
+      <legend className="font-display text-xl font-bold">{title}</legend>
+      {hint && <p className="text-utp-muted mt-1 text-sm">{hint}</p>}
+      <div className="mt-4">{children}</div>
     </fieldset>
   );
 }
@@ -196,16 +204,20 @@ function Choice({
     <button
       onClick={onClick}
       aria-pressed={active}
-      className={`relative flex items-center gap-3 rounded-xl border-2 p-4 text-left transition ${
-        active ? "border-utp-violet bg-utp-violet-soft" : "border-utp-line hover:border-utp-violet/50"
+      className={`relative flex items-center gap-3.5 rounded-2xl border-2 p-4 text-left transition-colors ${
+        active ? "border-utp-violet bg-utp-violet-soft" : "border-utp-line bg-white hover:border-utp-violet/40"
       }`}
     >
-      {Icon && <Icon size={26} className={active ? "text-utp-violet" : "text-utp-muted"} />}
+      {Icon && (
+        <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${active ? "bg-utp-violet text-white" : "bg-utp-bg text-utp-muted"}`}>
+          <Icon size={22} />
+        </span>
+      )}
       <span className="min-w-0">
         <b className="block">{label}</b>
         {detail && <span className="block text-xs text-utp-muted">{detail}</span>}
       </span>
-      {active && <Check size={18} className="absolute top-2 right-2 text-utp-violet" />}
+      {active && <Check size={18} className="text-utp-violet absolute top-3 right-3" />}
     </button>
   );
 }
@@ -215,8 +227,8 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
     <button
       onClick={onClick}
       aria-pressed={active}
-      className={`rounded-full border px-3.5 py-1.5 text-sm font-bold ${
-        active ? "border-utp-violet bg-utp-violet text-white" : "border-utp-line text-utp-ink hover:border-utp-violet"
+      className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+        active ? "border-utp-violet bg-utp-violet text-white" : "border-utp-line bg-white text-utp-ink hover:border-utp-violet/50"
       }`}
     >
       {children}
@@ -350,7 +362,7 @@ function StepWork() {
                                 paint(key, !on);
                               }}
                               onPointerEnter={() => painting.current !== null && painting.current !== on && paint(key, painting.current)}
-                              className={`block h-6 w-full rounded ${on ? "bg-utp-navy" : "bg-utp-bg hover:bg-utp-violet-soft"}`}
+                              className={`block h-6 w-full rounded-md ${on ? "bg-utp-violet" : "bg-utp-bg hover:bg-utp-violet-soft"}`}
                             />
                           </td>
                         );
@@ -403,7 +415,7 @@ function StepLimits({ cheapest }: { cheapest: number }) {
           >
             <Minus size={18} />
           </button>
-          <span className="w-16 text-center text-3xl font-black" aria-live="polite">
+          <span className="font-display w-16 text-center text-4xl font-bold" aria-live="polite">
             {prefs.maxCourses}
           </span>
           <button
@@ -438,7 +450,7 @@ function StepLimits({ cheapest }: { cheapest: number }) {
               value={prefs.budgetPen ?? ""}
               placeholder="Sin límite"
               onChange={(e) => set({ budgetPen: e.target.value ? Math.max(1, Number(e.target.value)) : null })}
-              className="mt-1 w-full rounded-md border border-utp-line px-3 py-2"
+              className="field mt-1.5"
             />
           </label>
           <label className="text-sm">
@@ -449,12 +461,12 @@ function StepLimits({ cheapest }: { cheapest: number }) {
               inputMode="decimal"
               value={prefs.costPerCreditPen}
               onChange={(e) => set({ costPerCreditPen: Math.max(1, Number(e.target.value) || 1) })}
-              className="mt-1 w-full rounded-md border border-utp-line px-3 py-2"
+              className="field mt-1.5"
             />
           </label>
         </div>
         {credits != null && (
-          <p className={`mt-2 text-sm ${prefs.budgetPen! < cheapest ? "font-bold text-utp-red" : "text-utp-muted"}`}>
+          <p className={`mt-3 text-sm ${prefs.budgetPen! < cheapest ? "text-utp-red font-semibold" : "text-utp-muted"}`}>
             {prefs.budgetPen! < cheapest
               ? `No alcanza ni para el curso más barato (S/ ${cheapest.toFixed(2)}).`
               : `Te alcanza para ${round2(credits)} créditos.`}
@@ -502,12 +514,12 @@ function StepSummary({ onEdit }: { onEdit: (step: number) => void }) {
   ];
   return (
     <Question title="Revisa tus respuestas" hint="Los cursos repetidos van primero y luego los obligatorios.">
-      <dl className="divide-y divide-utp-line rounded-lg border border-utp-line">
+      <dl className="divide-utp-line border-utp-line divide-y overflow-hidden rounded-2xl border">
         {rows.map(([k, v, s]) => (
-          <div key={k} className="flex items-center gap-3 px-4 py-2.5 text-sm">
-            <dt className="w-36 shrink-0 font-bold">{k}</dt>
-            <dd className="min-w-0 flex-1">{v}</dd>
-            <button onClick={() => onEdit(s)} className="text-xs font-bold text-utp-violet underline">
+          <div key={k} className="flex items-center gap-3 px-5 py-3 text-sm">
+            <dt className="text-utp-muted w-36 shrink-0 font-medium">{k}</dt>
+            <dd className="min-w-0 flex-1 font-semibold">{v}</dd>
+            <button onClick={() => onEdit(s)} className="text-utp-violet text-xs font-semibold hover:underline">
               Editar
             </button>
           </div>
@@ -527,7 +539,7 @@ function Results({ result, onEdit }: { result: GenerateResult; onEdit: () => voi
 
   if (!result.options.length) {
     return (
-      <section className="rounded-xl bg-white p-6 shadow-sm">
+      <section className="card p-8">
         <AlertTriangle className="text-utp-red" />
         <h2 className="mt-2 text-lg font-bold">No encontramos un horario que cumpla todo</h2>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
@@ -535,7 +547,7 @@ function Results({ result, onEdit }: { result: GenerateResult; onEdit: () => voi
             <li key={t}>{t}</li>
           ))}
         </ul>
-        <button onClick={onEdit} className="mt-4 rounded-md bg-utp-violet px-4 py-2 text-sm font-bold text-white">
+        <button onClick={onEdit} className="btn btn-primary mt-5">
           Cambiar mis preferencias
         </button>
       </section>
@@ -558,13 +570,13 @@ function Results({ result, onEdit }: { result: GenerateResult; onEdit: () => voi
             role="tab"
             aria-selected={i === active}
             onClick={() => setActive(i)}
-            className={`rounded-xl border-2 bg-white p-3 text-left shadow-sm ${i === active ? "border-utp-violet" : "border-transparent"}`}
+            className={`shadow-soft rounded-2xl border-2 bg-white p-4 text-left transition-colors ${i === active ? "border-utp-violet" : "border-transparent hover:border-utp-violet/30"}`}
           >
             <div className="flex flex-wrap items-center justify-between gap-1">
-              <b>Opción {LETTERS[i]}</b>
-              {i === 0 && <span className="rounded-full bg-utp-red px-2 py-0.5 text-[10px] font-bold text-white">MEJOR</span>}
+              <b className="font-display text-base">Opción {LETTERS[i]}</b>
+              {i === 0 && <span className="bg-utp-red rounded-full px-2 py-0.5 text-[11px] font-bold text-white">Mejor</span>}
             </div>
-            <div className="mt-1 text-xs text-utp-muted">
+            <div className="text-utp-muted mt-1 text-xs">
               {o.picks.length} cursos<span className="hidden sm:inline"> · {o.credits} créditos</span> · {o.days.length} días
             </div>
             <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-utp-bg" title="Puntaje">
@@ -574,14 +586,14 @@ function Results({ result, onEdit }: { result: GenerateResult; onEdit: () => voi
         ))}
       </div>
 
-      <section className="rounded-xl bg-white p-5 shadow-sm">
-        <div className="flex flex-wrap items-start justify-between gap-3">
+      <section className="card p-5 md:p-7">
+        <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h2 className="text-lg font-bold">Opción {LETTERS[active]}</h2>
+            <h2 className="text-2xl font-bold">Opción {LETTERS[active]}</h2>
             <ul className="mt-2 space-y-1 text-sm">
               {option.highlights.map((h) => (
                 <li key={h} className="flex gap-2">
-                  <Check size={16} className="mt-0.5 shrink-0 text-emerald-600" /> {h}
+                  <Check size={16} className="text-utp-mint mt-0.5 shrink-0" /> {h}
                 </li>
               ))}
             </ul>
@@ -598,37 +610,37 @@ function Results({ result, onEdit }: { result: GenerateResult; onEdit: () => voi
           <WeekGrid chosen={chosen} busy={prefs.works ? prefs.busy : []} />
         </div>
 
-        <ul className="mt-4 divide-y divide-utp-line rounded-lg border border-utp-line text-sm">
+        <ul className="divide-utp-line border-utp-line mt-5 divide-y overflow-hidden rounded-2xl border text-sm">
           {option.picks.map((p) => (
-            <li key={p.course.code} className="flex flex-wrap items-center gap-x-3 gap-y-0.5 px-4 py-2">
+            <li key={p.course.code} className="flex flex-wrap items-center gap-x-3 gap-y-0.5 px-5 py-3">
               <span className="w-full min-w-0 sm:w-auto sm:flex-1">
                 <b>{p.course.name}</b>
-                {p.course.repeated && <span className="ml-2 rounded bg-utp-red/10 px-1.5 text-[10px] font-bold text-utp-red">REPITE</span>}
+                {p.course.repeated && <span className="bg-utp-red/10 text-utp-red ml-2 rounded-md px-1.5 py-0.5 text-[11px] font-bold">Repite</span>}
                 <span className="block text-xs text-utp-muted">
                   Secc. {p.section.code} · {p.section.sessions.map((s) => `${DAY_SHORT[s.day]} ${s.start}–${s.end}`).join(", ")}
                 </span>
               </span>
-              <Link to={`/profesores/${p.section.professorId}`} className="text-xs text-utp-violet underline">
+              <Link to={`/profesores/${p.section.professorId}`} className="text-utp-violet text-xs font-semibold hover:underline">
                 {p.section.professorName ?? "Por asignar"}
               </Link>
-              <span className="w-12 text-right text-xs font-bold">{p.professorScore ? `${p.professorScore.toFixed(1)}★` : "–"}</span>
+              <span className="w-12 text-right text-xs font-bold tabular-nums">{p.professorScore ? `${p.professorScore.toFixed(1)}★` : "–"}</span>
             </li>
           ))}
         </ul>
 
-        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end">
-          <button onClick={onEdit} className="rounded-md border border-utp-violet px-4 py-2 text-sm font-bold text-utp-violet">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
+          <button onClick={onEdit} className="btn btn-outline text-utp-violet">
             Cambiar preferencias
           </button>
-          <button onClick={() => use(option)} className="rounded-md bg-utp-red px-5 py-2 text-sm font-bold text-white hover:bg-utp-red-dark">
+          <button onClick={() => use(option)} className="btn btn-accent px-6">
             Usar este horario
           </button>
         </div>
       </section>
 
       {result.left.length > 0 && (
-        <section className="rounded-xl bg-white p-5 text-sm shadow-sm">
-          <h2 className="font-bold">Cursos que no entraron en la opción A</h2>
+        <section className="card p-6 text-sm">
+          <h2 className="text-base font-bold">Cursos que no entraron en la opción A</h2>
           <ul className="mt-2 space-y-1">
             {result.left.map((l) => (
               <li key={l.course.code}>
@@ -637,7 +649,7 @@ function Results({ result, onEdit }: { result: GenerateResult; onEdit: () => voi
             ))}
           </ul>
           {result.tips.length > 0 && (
-            <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-amber-900">{result.tips.join(" ")}</p>
+            <p className="bg-utp-amber-soft mt-4 rounded-xl px-4 py-3 text-amber-900">{result.tips.join(" ")}</p>
           )}
         </section>
       )}
@@ -647,8 +659,8 @@ function Results({ result, onEdit }: { result: GenerateResult; onEdit: () => voi
 
 function Metric({ value, label }: { value: string; label: string }) {
   return (
-    <div className="min-w-[72px] rounded-lg bg-utp-bg px-3 py-2">
-      <div className="text-base font-black">{value}</div>
+    <div className="bg-utp-bg min-w-[78px] rounded-xl px-3.5 py-2.5">
+      <div className="font-display text-xl font-bold tabular-nums">{value}</div>
       <div className="text-utp-muted">{label}</div>
     </div>
   );

@@ -55,12 +55,10 @@ export default function RecommendationsPage() {
 
   return (
     <div className="mx-auto max-w-6xl">
-      <div className="flex flex-wrap items-end justify-between gap-3">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">Recomendaciones</h1>
-          <p className="mt-1 max-w-2xl text-sm text-utp-muted">
-            Para cada curso, las secciones con los docentes mejor evaluados por otros estudiantes.
-          </p>
+          <h1 className="page-title">Recomendaciones</h1>
+          <p className="page-lead">Para cada curso, las secciones con los docentes mejor evaluados por otros estudiantes.</p>
         </div>
         <Segmented
           value={shift}
@@ -73,22 +71,19 @@ export default function RecommendationsPage() {
         />
       </div>
 
-      <div className="mt-4 flex flex-col gap-3 rounded-xl bg-utp-navy p-4 text-white shadow-sm sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <div className="font-bold">Armar mi horario con los mejores docentes</div>
-          <div className="text-sm text-white/75">
-            Elige la mejor sección de cada curso, sin cruces y hasta {MAX_CREDITS} créditos (repetidos primero). Reemplaza tu selección actual.
-          </div>
+      <div className="bg-utp-night hourlines mt-6 flex flex-col gap-5 rounded-3xl p-6 text-white sm:flex-row sm:items-center sm:justify-between md:p-8">
+        <div className="max-w-xl">
+          <h2 className="font-display text-2xl font-bold">Arma tu horario con los mejores docentes</h2>
+          <p className="mt-2 text-[15px] leading-relaxed text-white/70">
+            Elegimos la mejor sección de cada curso, sin cruces y hasta {MAX_CREDITS} créditos, con los repetidos primero. Esto reemplaza tu selección actual.
+          </p>
         </div>
-        <button
-          onClick={applyBest}
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-bold text-utp-navy hover:bg-utp-violet-soft"
-        >
-          <Sparkles size={16} /> Aplicar recomendación
+        <button onClick={applyBest} className="btn btn-accent shrink-0 px-5 py-3">
+          <Sparkles size={17} /> Aplicar recomendación
         </button>
       </div>
       {result && (
-        <p role="status" className="mt-3 rounded-lg bg-emerald-50 px-4 py-2 text-sm text-emerald-900">
+        <p role="status" className="bg-utp-mint-soft text-utp-mint mt-4 rounded-2xl px-5 py-3.5 text-sm leading-relaxed">
           {result}{" "}
           <Link to="/horario" className="font-bold underline">
             Ver mi horario
@@ -96,30 +91,23 @@ export default function RecommendationsPage() {
         </p>
       )}
 
-      <ul className="mt-4 flex flex-col gap-4">
+      <ul className="mt-6 flex flex-col gap-5">
         {courses.map((c) => {
           const top = ranked(catalog, stats, c.code, shift).slice(0, 3);
           return (
-            <li key={c.code} className="overflow-hidden rounded-xl bg-white shadow-sm">
-              <div className="px-4 py-3">
-                <div className="font-bold">
-                  {c.code} · {c.name}
-                </div>
-                <div className="text-xs text-utp-muted">
-                  {c.credits} créditos · ciclo {c.cycle}
-                </div>
+            <li key={c.code} className="card overflow-hidden">
+              <div className="flex flex-wrap items-baseline justify-between gap-2 px-5 py-4">
+                <h3 className="text-lg font-semibold">
+                  <span className="text-utp-muted font-medium">{c.code}</span> {c.name}
+                </h3>
+                <span className="text-utp-muted text-[13px]">
+                  {c.credits} créditos, ciclo {c.cycle}
+                </span>
               </div>
-              <ul className="divide-y divide-utp-line border-t border-utp-line">
-                {top.length === 0 && <li className="px-4 py-4 text-sm text-utp-muted">Sin secciones con vacantes en este turno.</li>}
+              <ul className="divide-utp-line border-utp-line divide-y border-t">
+                {top.length === 0 && <li className="text-utp-muted px-5 py-5 text-sm">Sin secciones con vacantes en este turno.</li>}
                 {top.map((s, i) => (
-                  <SectionRow
-                    key={s.code}
-                    course={c}
-                    section={s}
-                    chosen={chosen}
-                    stats={stats.get(s.professorId ?? "")}
-                    highlight={i === 0 ? "Mejor opción" : undefined}
-                  />
+                  <SectionRow key={s.code} course={c} section={s} chosen={chosen} stats={stats.get(s.professorId ?? "")} highlight={i === 0 ? "Mejor opción" : undefined} />
                 ))}
               </ul>
             </li>

@@ -9,40 +9,37 @@ export default function NoOffer() {
     setImported({ source: "utp-portal-mock", extractedAt: new Date().toISOString(), offer: DEMO_OFFER }, "demo");
 
   return (
-    <div className="mx-auto max-w-2xl rounded-xl bg-white p-6 shadow-sm md:p-8">
-      <h1 className="text-xl font-bold">Primero importa tu oferta de matrícula</h1>
-      <p className="mt-1 text-sm text-utp-muted">
-        Necesitamos los cursos, secciones y horarios que te ofrece la universidad para armar tu matrícula.
-      </p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-lg border border-utp-line p-4">
-          <Download className="text-utp-violet" size={22} />
-          <h2 className="mt-2 font-bold">Con la extensión</h2>
-          <ol className="mt-1 list-decimal space-y-0.5 pl-4 text-sm text-utp-muted">
+    <div className="mx-auto max-w-3xl">
+      <h1 className="page-title">Empecemos por tu oferta de matrícula</h1>
+      <p className="page-lead">Necesitamos los cursos, secciones y horarios que te ofrece la universidad para armar tu matrícula. Tienes dos caminos.</p>
+
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <section className="card flex flex-col p-6">
+          <span className="bg-utp-violet-soft text-utp-violet flex h-11 w-11 items-center justify-center rounded-xl">
+            <Download size={22} />
+          </span>
+          <h2 className="mt-4 text-lg font-bold">Importarla con la extensión</h2>
+          <p className="text-utp-muted mt-1 text-sm">Lee tu portal sin tocar nada y trae tus cursos reales.</p>
+          <ol className="text-utp-ink/80 mt-4 list-decimal space-y-1.5 pl-5 text-sm marker:font-semibold">
             <li>Abre el portal de matrícula.</li>
             <li>Haz clic en la extensión MiMatrícula.</li>
-            <li>"Extraer oferta" → "Enviar a MiMatrícula".</li>
+            <li>Pulsa “Extraer oferta” y luego “Enviar a MiMatrícula”.</li>
           </ol>
-          <a
-            href="http://localhost:5174/"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-3 inline-block rounded-md bg-utp-violet px-3 py-2 text-sm font-bold text-white hover:bg-utp-violet-dark"
-          >
+          <a href="http://localhost:5174/" target="_blank" rel="noreferrer" className="btn btn-primary mt-auto self-start">
             Abrir portal de matrícula
           </a>
-        </div>
-        <div className="rounded-lg border border-utp-line p-4">
-          <PlayCircle className="text-utp-red" size={22} />
-          <h2 className="mt-2 font-bold">Probar con datos de demo</h2>
-          <p className="mt-1 text-sm text-utp-muted">Carga una oferta ficticia (12 cursos, 102 secciones) para explorar el sistema.</p>
-          <button
-            onClick={useDemo}
-            className="mt-3 rounded-md border border-utp-violet px-3 py-2 text-sm font-bold text-utp-violet hover:bg-utp-violet-soft"
-          >
+        </section>
+
+        <section className="card flex flex-col p-6">
+          <span className="bg-utp-red/10 text-utp-red flex h-11 w-11 items-center justify-center rounded-xl">
+            <PlayCircle size={22} />
+          </span>
+          <h2 className="mt-4 text-lg font-bold">Explorar con datos de demo</h2>
+          <p className="text-utp-muted mt-1 mb-5 text-sm">Carga una oferta ficticia con 12 cursos y 102 secciones para probar todo el sistema ahora mismo.</p>
+          <button onClick={useDemo} className="btn btn-outline mt-auto self-start">
             Usar datos de demo
           </button>
-        </div>
+        </section>
       </div>
     </div>
   );
