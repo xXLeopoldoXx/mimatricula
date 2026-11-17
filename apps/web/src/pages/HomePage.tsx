@@ -6,6 +6,7 @@ import { useOfferStore } from "../store/offer";
 import NoOffer from "../components/NoOffer";
 import ScoreBadge from "../components/ScoreBadge";
 import MiniWeek from "../components/MiniWeek";
+import { GeoRings } from "../components/AuthScene";
 import type { Chosen } from "../lib/catalog";
 
 export default function HomePage({ student }: { student: Student }) {
@@ -47,14 +48,14 @@ export default function HomePage({ student }: { student: Student }) {
     <div className="flex flex-col gap-10">
       <Hero name={firstName} chosen={chosen} clashes={clashes} hasOffer />
 
-      <section className="card bg-utp-line grid grid-cols-2 gap-px overflow-hidden lg:grid-cols-4" aria-label="Resumen de tu matrícula">
+      <section className="card reveal bg-utp-line grid grid-cols-2 gap-px overflow-hidden lg:grid-cols-4" style={{ ["--i" as string]: 1 }} aria-label="Resumen de tu matrícula">
         <Stat icon={BookOpen} value={`${chosen.length}`} suffix={`de ${catalog.offer.courses.length}`} label="Cursos elegidos" />
         <Stat icon={CalendarDays} value={`${credits}`} suffix={`de ${MAX_CREDITS}`} label="Créditos" warn={over} bar={Math.min(100, (credits / MAX_CREDITS) * 100)} />
         <Stat icon={AlertTriangle} value={`${clashes}`} label={clashes === 1 ? "Curso con cruce" : "Cursos con cruce"} warn={clashes > 0} />
         <Stat icon={Users} value={`${catalog.offer.professors.length}`} label="Docentes en tu oferta" />
       </section>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
+      <div className="reveal grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px]" style={{ ["--i" as string]: 2 }}>
         <section className="card p-6">
           <div className="flex items-center justify-between gap-2">
             <div>
@@ -139,8 +140,9 @@ function Hero({ name, chosen, clashes, hasOffer }: { name: string; chosen: Chose
         : "Sin cruces y dentro del límite de créditos. Revisa tu semana o pídele al generador una alternativa.";
 
   return (
-    <section className="bg-utp-night blob hourlines relative overflow-hidden rounded-[2.5rem] p-6 text-white md:p-14">
-      <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
+    <section className="geo-bg reveal relative overflow-hidden rounded-3xl p-6 text-white md:p-12">
+      <GeoRings marks={false} />
+      <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-bold">
             <span className="bg-utp-green h-2 w-2 rounded-full" /> Matrícula 2027 abierta
@@ -172,7 +174,7 @@ function Hero({ name, chosen, clashes, hasOffer }: { name: string; chosen: Chose
             ))}
           </dl>
         </div>
-        <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur md:p-5">
+        <div className="rounded-2xl border border-white/15 bg-white/[0.07] p-4 backdrop-blur-sm md:p-5">
           <MiniWeek chosen={chosen} />
           <p className="mt-3 text-xs text-white/60">{chosen.length ? "Así se ve tu semana con las secciones que elegiste." : "Aquí aparecerán tus clases cuando elijas secciones."}</p>
         </div>
@@ -194,7 +196,7 @@ function Pillars() {
       <h2 id="why" className="font-display mt-2 text-3xl font-extrabold md:text-4xl">Decide con información, no con suerte.</h2>
       <div className="mt-6 grid gap-4 md:grid-cols-3">
         {PILLARS.map((p) => (
-          <article key={p.title} className={`${p.bg} relative overflow-hidden rounded-[2rem] p-7 text-white transition-transform hover:-translate-y-1`}>
+          <article key={p.title} className={`${p.bg} relative overflow-hidden rounded-2xl p-7 text-white transition-transform hover:-translate-y-1`}>
             <span className="font-display absolute -top-4 right-3 text-[7rem] leading-none font-extrabold text-white/15" aria-hidden="true">{p.n}</span>
             <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20"><p.icon size={22} /></span>
             <h3 className="relative mt-6 text-xl font-extrabold">{p.title}</h3>

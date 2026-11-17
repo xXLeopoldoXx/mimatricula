@@ -71,7 +71,7 @@ export default function RecommendationsPage() {
         />
       </div>
 
-      <div className="bg-utp-night hourlines mt-6 flex flex-col gap-5 rounded-3xl p-6 text-white sm:flex-row sm:items-center sm:justify-between md:p-8">
+      <div className="geo-bg mt-6 flex flex-col gap-5 rounded-3xl p-6 text-white sm:flex-row sm:items-center sm:justify-between md:p-8">
         <div className="max-w-xl">
           <h2 className="font-display text-2xl font-bold">Arma tu horario con los mejores docentes</h2>
           <p className="mt-2 text-[15px] leading-relaxed text-white/70">

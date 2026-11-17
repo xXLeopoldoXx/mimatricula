@@ -79,7 +79,7 @@ export default function CoursesPage() {
             className="w-full bg-transparent text-sm outline-none"
           />
         </label>
-        <div className="flex gap-2">
+        <div className="flex min-w-0 gap-2">
           <Segmented
             value={shift}
             onChange={setShift}
@@ -92,7 +92,7 @@ export default function CoursesPage() {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as Sort)}
-            className="border-utp-line focus:border-utp-violet rounded-xl border bg-white px-3 text-sm font-medium outline-none"
+            className="border-utp-line focus:border-utp-violet min-w-0 flex-1 rounded-xl border bg-white px-3 text-sm font-medium outline-none sm:flex-none"
             aria-label="Ordenar secciones"
           >
             <option value="docente">Mejor docente</option>
