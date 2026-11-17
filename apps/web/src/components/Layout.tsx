@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router";
 import { BookOpen, CalendarDays, Home, LogOut, Sparkles, Users, Wand2 } from "lucide-react";
 import type { Student } from "@mimatricula/shared";
 import { useOfferStore } from "../store/offer";
@@ -25,6 +25,11 @@ export default function Layout({
   onLogout: () => void | Promise<void>;
   authError?: string | null;
 }) {
+  const { pathname } = useLocation();
+  // Al cambiar de pantalla volvemos arriba: evita quedar a media página de la anterior
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [pathname]);
   return (
     <div className="min-h-screen">
       <TopBar student={student} onLogout={onLogout} />
@@ -35,7 +40,7 @@ export default function Layout({
       )}
       <main className="min-w-0 pb-28 lg:pb-0">
         <ImportedBanner />
-        <div className="wrap py-6 md:py-10">
+        <div key={pathname} className="wrap page-in py-6 md:py-10">
           <Outlet />
         </div>
       </main>
@@ -47,6 +52,20 @@ export default function Layout({
 
 function TopBar({ student, onLogout }: { student: Student; onLogout: () => void | Promise<void> }) {
   const [menu, setMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!menu) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!menuRef.current?.contains(e.target as Node)) setMenu(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenu(false);
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [menu]);
   return (
     <header className="sticky top-0 z-30">
       <div className="bg-utp-orange hidden text-center text-xs font-bold text-white md:block">
@@ -55,31 +74,32 @@ function TopBar({ student, onLogout }: { student: Student; onLogout: () => void 
         </div>
       </div>
       <div className="border-utp-line border-b bg-white/90 backdrop-blur">
-        <div className="wrap flex h-16 items-center gap-6">
+        <div className="wrap flex h-16 items-center gap-4 xl:gap-6">
           <NavLink to="/" className="flex items-center gap-2.5" aria-label="Inicio">
             <LogoMark size={36} />
             <Wordmark />
           </NavLink>
-          <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex" aria-label="Principal">
+          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex xl:gap-1" aria-label="Principal">
             {NAV.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
                 end={"end" in n}
                 className={({ isActive }) =>
-                  `rounded-full px-3.5 py-2 text-sm font-semibold transition-colors ${isActive ? "bg-utp-violet-soft text-utp-violet" : "text-utp-muted hover:text-utp-ink"}`
+                  `relative rounded-lg px-3 py-2 text-sm font-semibold whitespace-nowrap xl:px-3.5 transition-colors after:absolute after:inset-x-3.5 after:-bottom-[13px] after:h-0.5 after:origin-left after:rounded-full after:bg-utp-orange after:transition-transform after:duration-300 ${isActive ? "text-utp-violet after:scale-x-100" : "text-utp-muted hover:text-utp-ink after:scale-x-0 hover:after:scale-x-50"}`
                 }
               >
-                {n.label}
+                <span className="xl:hidden">{n.short}</span>
+                <span className="hidden xl:inline">{n.label}</span>
               </NavLink>
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-3 lg:ml-0">
             <CreditMeter />
-            <div className="relative">
+            <div className="relative" ref={menuRef}>
               <button
                 onClick={() => setMenu((v) => !v)}
-                className="bg-utp-navy flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white"
+                className="bg-utp-navy hover:bg-utp-night flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold text-white transition-colors"
                 aria-haspopup="menu"
                 aria-expanded={menu}
                 aria-label="Menú de tu cuenta"
@@ -87,7 +107,7 @@ function TopBar({ student, onLogout }: { student: Student; onLogout: () => void 
                 {initials(student.name)}
               </button>
               {menu && (
-                <div role="menu" className="border-utp-line shadow-lift absolute right-0 mt-2 w-64 overflow-hidden rounded-2xl border bg-white py-1">
+                <div role="menu" className="border-utp-line shadow-lift page-in absolute right-0 mt-2 w-64 overflow-hidden rounded-2xl border bg-white py-1">
                   <div className="border-utp-line border-b px-4 py-3">
                     <div className="truncate text-sm font-semibold">{student.name}</div>
                     <div className="text-utp-muted truncate text-xs">{student.code ?? student.email}</div>
@@ -107,7 +127,7 @@ function TopBar({ student, onLogout }: { student: Student; onLogout: () => void 
 
 function Footer() {
   return (
-    <footer className="bg-utp-night mt-12 hidden text-white md:block">
+    <footer className="geo-bg mt-12 hidden text-white md:block">
       <div className="wrap grid gap-8 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5">
@@ -148,7 +168,7 @@ function CreditMeter() {
   const pct = Math.min(100, (credits / MAX_CREDITS) * 100);
   const over = credits > MAX_CREDITS;
   return (
-    <div className="bg-utp-bg hidden items-center gap-3 rounded-full py-1.5 pr-4 pl-3 sm:flex" title="Créditos elegidos">
+    <div className="bg-utp-bg hidden items-center gap-3 rounded-xl py-1.5 pr-4 pl-3 sm:flex" title="Créditos elegidos">
       <span className={`font-display text-lg font-extrabold tabular-nums ${over ? "text-utp-red" : "text-utp-navy"}`}>{credits}</span>
       <span className="text-utp-muted text-xs leading-tight font-semibold">de {MAX_CREDITS}<br />créditos</span>
       <div className="bg-utp-line h-1.5 w-14 overflow-hidden rounded-full" role="progressbar" aria-valuenow={credits} aria-valuemin={0} aria-valuemax={MAX_CREDITS} aria-label="Créditos elegidos">
@@ -170,7 +190,7 @@ function MobileNav() {
           to={n.to}
           end={"end" in n}
           className={({ isActive }) =>
-            `flex flex-col items-center gap-0.5 rounded-xl py-2 text-[10px] font-medium outline-white transition-colors ${
+            `flex flex-col items-center gap-0.5 rounded-xl py-2 text-[10px] font-semibold outline-white transition-colors ${
               isActive ? "bg-white/14 text-white" : "text-white/60"
             }`
           }

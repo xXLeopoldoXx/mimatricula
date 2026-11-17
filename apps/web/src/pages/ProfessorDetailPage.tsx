@@ -63,7 +63,7 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
         <ArrowLeft size={16} /> Volver a profesores
       </Link>
 
-      <section className="bg-utp-night hourlines grid gap-8 rounded-3xl p-6 text-white md:grid-cols-[1fr_320px] md:p-10">
+      <section className="geo-bg grid gap-8 rounded-3xl p-6 text-white md:grid-cols-[1fr_320px] md:p-10">
         <div>
           <div className="flex items-center gap-4">
             <span className="bg-utp-violet flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-xl font-bold">

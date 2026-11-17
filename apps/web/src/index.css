@@ -30,6 +30,14 @@
   --color-utp-mint-soft: #e3f5ed;
   --color-utp-amber-soft: #fff4dc;
 
+  /* Escala geométrica: todo se construye sobre 4 radios y una cuadrícula de 8px */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.34, 1.4, 0.64, 1);
+
   --shadow-soft: 0 1px 2px rgb(20 18 63 / 0.05), 0 10px 28px -16px rgb(20 18 63 / 0.18);
   --shadow-lift: 0 2px 4px rgb(20 18 63 / 0.06), 0 22px 44px -20px rgb(20 18 63 / 0.35);
 }
@@ -71,10 +79,10 @@
 
 @layer components {
   .card {
-    @apply border-utp-line shadow-soft rounded-3xl border bg-white;
+    @apply border-utp-line shadow-soft rounded-2xl border bg-white;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all hover:-translate-y-px disabled:cursor-not-allowed disabled:opacity-45;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold transition-all duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-45;
   }
   .btn-primary {
     @apply bg-utp-violet hover:bg-utp-violet-dark text-white;
@@ -92,7 +100,7 @@
     @apply border border-white/20 bg-white/8 text-white hover:bg-white/15;
   }
   .field {
-    @apply border-utp-line placeholder:text-utp-muted/70 focus:border-utp-violet focus:ring-utp-violet/15 w-full rounded-2xl border bg-white px-4 py-2.5 text-sm outline-none transition focus:ring-4;
+    @apply border-utp-line placeholder:text-utp-muted/70 focus:border-utp-violet focus:ring-utp-violet/15 w-full rounded-xl border bg-white px-4 py-3 text-sm outline-none transition focus:ring-4;
   }
   .pill {
     @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
@@ -105,34 +113,186 @@
   }
 }
 
-/* Líneas de hora: el motivo estructural del hero (el tiempo es el contenido de esta app) */
-.hourlines {
-  background-image: repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.055) 0 1px, transparent 1px 48px);
+/* ───────── Fondo geométrico compartido (login, hero, pie) ───────── */
+.geo-bg {
+  background-color: #1740c8;
+  background-image:
+    radial-gradient(rgb(255 255 255 / 0.15) 1px, transparent 1.4px),
+    radial-gradient(60% 70% at 100% 0%, rgb(255 122 26 / 0.22), transparent 65%),
+    linear-gradient(140deg, #1d4ee0 0%, #1740c8 48%, #0f2a8f 100%);
+  background-size: 24px 24px, auto, auto;
+}
+/* Papel cuadriculado tenue para las zonas claras */
+.grid-paper {
+  background-image:
+    linear-gradient(to right, rgb(23 64 200 / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(23 64 200 / 0.055) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(80% 70% at 50% 45%, #000 30%, transparent 100%);
 }
 
-/* Único momento animado de la app: los bloques del mosaico se acomodan al cargar */
+/* ───────── Movimiento ───────── */
 @keyframes block-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  from { opacity: 0; transform: translateY(14px) scale(0.94); }
+  to { opacity: 1; transform: none; }
 }
-.block-in {
-  animation: block-in 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+.block-in { animation: block-in 0.75s var(--ease-out-expo) both; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.reveal { animation: fade-up 0.6s var(--ease-out-expo) both; animation-delay: calc(var(--i, 0) * 70ms); }
+.page-in { animation: fade-up 0.4s var(--ease-out-expo) both; }
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(3px); }
+  30%, 50%, 70% { transform: translateX(-5px); }
+  40%, 60% { transform: translateX(5px); }
+}
+.shake { animation: shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
+@keyframes orbit { to { transform: rotate(360deg); } }
+.orbit { transform-box: view-box; animation: orbit var(--t, 90s) linear infinite; }
+.orbit-rev { animation-direction: reverse; }
+
+@keyframes splash-bar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(260%); }
+}
+
+/* Mostrar / ocultar campos con transición de altura */
+.fold {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.4s var(--ease-out-expo), opacity 0.25s ease;
+}
+.fold[data-open="true"] { grid-template-rows: 1fr; opacity: 1; }
+.fold > div { min-height: 0; overflow: hidden; padding: 4px; margin: -4px; }
+
+/* ───────── Escena del login: una semana que se ordena sola ─────────
+   Cuadrícula de 5 columnas × 8 filas (8:00–16:00). Cada bloque se posiciona con
+   --c (columna), --r (fila) y --h (alto en filas), así todo cae exacto en la retícula. */
+.scene { --row: 36px; --cycle: 11s; --start: 2.4s; }
+.scene-grid {
+  position: relative;
+  height: calc(var(--row) * 8);
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.1) 1px, transparent 1px);
+  background-size: 20% 100%, 100% var(--row);
+  border-right: 1px solid rgb(255 255 255 / 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+}
+.scene-block {
+  position: absolute;
+  left: calc(var(--c) * 20% + 3px);
+  width: calc(20% - 6px);
+  top: calc(var(--r) * var(--row) + 3px);
+  height: calc(var(--h) * var(--row) - 6px);
+  padding: 6px 8px;
+  border-radius: 8px;
+  border-left: 3px solid var(--k);
+  background: color-mix(in srgb, var(--k) 24%, transparent);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  overflow: hidden;
+  animation: drop-in 0.7s var(--ease-snap) both;
+  animation-delay: calc(0.25s + var(--i) * 0.12s);
+}
+.scene-block small { display: block; margin-top: 2px; font-size: 9.5px; font-weight: 600; opacity: 0.7; }
+@keyframes drop-in {
+  from { opacity: 0; transform: translateY(-28px) scale(0.92); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Línea de tiempo que recorre la semana */
+.scene-scan {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff7a1a 12%, #ff7a1a 88%, transparent);
+  box-shadow: 0 0 14px 1px rgb(255 122 26 / 0.65);
+  animation: scan 7s ease-in-out infinite;
+  animation-delay: 1.4s;
+  pointer-events: none;
+}
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  8%, 92% { opacity: 1; }
+  100% { transform: translateY(calc(var(--row) * 8)); opacity: 0; }
+}
+
+/* Bloque en conflicto: aparece superpuesto, vibra en rojo y se acomoda en el hueco libre */
+.scene-conflict {
+  animation: conflict var(--cycle) var(--ease-out-expo) infinite;
+  animation-delay: var(--start);
+  opacity: 0;
+}
+@keyframes conflict {
+  0%, 6% { opacity: 0; transform: translateY(-100%) scale(0.92); }
+  12% {
+    opacity: 1; transform: translateY(-100%);
+    background: rgb(229 56 59 / 0.4); border-left-color: #ff6b7a; box-shadow: 0 0 0 1px #ff6b7a;
+  }
+  16% { transform: translate(-4px, -100%); }
+  20% { transform: translate(4px, -100%); }
+  24% { transform: translate(-3px, -100%); }
+  28%, 46% {
+    transform: translateY(-100%);
+    background: rgb(229 56 59 / 0.4); border-left-color: #ff6b7a; box-shadow: 0 0 0 1px #ff6b7a;
+  }
+  60%, 90% {
+    opacity: 1; transform: translateY(0);
+    background: rgb(52 211 153 / 0.28); border-left-color: #34d399; box-shadow: 0 0 0 0 transparent;
+  }
+  97%, 100% { opacity: 0; transform: translateY(0) scale(0.96); }
+}
+.scene-chip {
+  position: absolute;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  opacity: 0;
+  animation-duration: var(--cycle);
+  animation-iteration-count: infinite;
+  animation-delay: var(--start);
+  animation-timing-function: ease;
+  white-space: nowrap;
+}
+.scene-chip-bad { background: rgb(229 56 59 / 0.22); color: #ffb3b8; animation-name: chip-bad; }
+.scene-chip-ok { background: rgb(52 211 153 / 0.2); color: #8ff0c8; animation-name: chip-ok; }
+@keyframes chip-bad {
+  0%, 9% { opacity: 0; transform: translateY(4px); }
+  14%, 46% { opacity: 1; transform: none; }
+  52%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes chip-ok {
+  0%, 54% { opacity: 0; transform: translateY(4px); }
+  62%, 92% { opacity: 1; transform: none; }
+  98%, 100% { opacity: 0; transform: translateY(-4px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .block-in {
-    animation: none;
-  }
-  * {
+  *, *::before, *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
   }
+  .scene-scan, .scene-conflict, .scene-chip-bad { display: none; }
+  .scene-chip-ok { opacity: 1; animation: none; }
 }
 
 @layer components {
@@ -142,4 +302,3 @@
   .faq summary::-webkit-details-marker { display: none; }
   .faq[open] summary svg { transform: rotate(45deg); }
 }
-.blob { background-image: radial-gradient(45% 55% at 92% 8%, rgb(255 122 26 / 0.5), transparent 70%), radial-gradient(40% 50% at 4% 100%, rgb(108 194 74 / 0.4), transparent 70%), repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.07) 0 1px, transparent 1px 48px); }

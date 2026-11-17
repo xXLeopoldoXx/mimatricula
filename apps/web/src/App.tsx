@@ -12,6 +12,7 @@ import ProfessorDetailPage from "./pages/ProfessorDetailPage";
 import RecommendationsPage from "./pages/RecommendationsPage";
 import GeneratorPage from "./pages/GeneratorPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import { LogoMark, Wordmark } from "./components/Logo";
 
 export default function App() {
   const { student, loading, sessionError, authError, login, register, logout } = useStudent();
@@ -20,7 +21,7 @@ export default function App() {
   const imported = useOfferStore((s) => s.imported);
 
   if (loading) {
-    return <div className="wrap py-10" role="status">Verificando sesión…</div>;
+    return <Splash />;
   }
   if (!student) {
     return (
@@ -46,5 +47,21 @@ export default function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
+  );
+}
+
+/** Pantalla de carga de marca mientras se verifica la sesión. */
+function Splash() {
+  return (
+    <div className="geo-bg flex min-h-screen flex-col items-center justify-center gap-6 text-white" role="status" aria-live="polite">
+      <div className="reveal flex items-center gap-3">
+        <LogoMark size={48} />
+        <Wordmark dark />
+      </div>
+      <div className="h-1 w-40 overflow-hidden rounded-full bg-white/15" aria-hidden="true">
+        <div className="bg-utp-orange h-full w-2/5 rounded-full" style={{ animation: "splash-bar 1.1s ease-in-out infinite" }} />
+      </div>
+      <span className="sr-only">Verificando sesión…</span>
+    </div>
   );
 }
