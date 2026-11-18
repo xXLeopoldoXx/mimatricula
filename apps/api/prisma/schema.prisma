@@ -3,27 +3,211 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
+// 1. ESTUDIANTES
 model Student {
-  id           String        @id @default(cuid())
-  email        String        @unique
-  name         String
-  code         String?       @unique
-  passwordHash String
-  createdAt    DateTime      @default(now())
-  sessions     AuthSession[]
+  id           String   @id @default(cuid())
+  email        String   @unique @map("correo_institucional")
+  name         String   @map("nombre_completo")
+  code         String?  @unique @map("codigo_estudiante")
+  passwordHash String   @map("contrasena_cifrada")
+  createdAt    DateTime @default(now()) @map("fecha_registro")
+
+  sessions           AuthSession[]
+  reviews            Review[]
+  approvedCourses    ApprovedCourse[]
+  preferences        StudentPreference?
+  generatedSchedules GeneratedSchedule[]
+
+  @@map("Estudiantes")
 }
 
+// Sesiones necesarias para iniciar y cerrar sesión
 model AuthSession {
   id        String   @id @default(cuid())
-  tokenHash String   @unique
-  studentId String
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique @map("hash_token")
+  studentId String   @map("id_estudiante")
+  expiresAt DateTime @map("fecha_expiracion")
+  createdAt DateTime @default(now()) @map("fecha_creacion")
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
 
   @@index([studentId, expiresAt])
+  @@map("Sesiones")
+}
+
+// 2. CURSOS
+model Course {
+  id          String @id @default(cuid())
+  code        String @map("codigo")
+  name        String @map("nombre")
+  weeklyHours Decimal @map("horas_semanales") @db.Decimal(5, 2)
+  credits     Decimal @map("creditos") @db.Decimal(5, 2)
+  cycle       String @map("ciclo")
+
+  professors      ProfessorCourse[]
+  sections        Section[]
+  approvedRecords ApprovedCourse[]
+
+  @@map("Cursos")
+}
+
+// 3. PROFESORES
+model Professor {
+  id                       String  @id @default(cuid())
+  name                     String  @map("nombre_completo")
+  department               String  @map("departamento")
+  generalRating            Decimal @default(0) @map("calificacion_general") @db.Decimal(3, 2)
+  recommendationPercentage Decimal @default(0) @map("porcentaje_recomendaciones") @db.Decimal(5, 2)
+
+  reviews  Review[]
+  courses  ProfessorCourse[]
+  sections Section[]
+
+  @@map("Profesores")
+}
+
+// Relación entre profesores y cursos
+model ProfessorCourse {
+  professorId String @map("id_profesor")
+  courseId    String @map("id_curso")
+
+  professor Professor @relation(fields: [professorId], references: [id], onDelete: Cascade)
+  course    Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@id([professorId, courseId])
+  @@map("Profesores_Cursos")
+}
+
+// 4. RESEÑAS DE PROFESORES
+model Review {
+  id             String   @id @default(cuid())
+  professorId    String   @map("id_profesor")
+  studentId      String   @map("id_estudiante")
+  clarity        Int      @map("claridad_al_explicar")
+  punctuality    Int      @map("puntualidad")
+  treatment      Int      @map("trato_al_estudiante")
+  difficulty     Int      @map("exigencia")
+  comment        String   @map("comentario")
+  tags           String[] @default([]) @map("etiquetas")
+  recommends     Boolean  @map("recomienda")
+  academicPeriod String   @map("periodo_academico")
+  createdAt      DateTime @default(now()) @map("fecha")
+
+  professor Professor @relation(fields: [professorId], references: [id], onDelete: Cascade)
+  student   Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([professorId])
+  @@index([studentId])
+  @@map("Resenas_Profesores")
+}
+
+// 5. SECCIONES
+model Section {
+  id          String  @id @default(cuid())
+  courseId    String  @map("curso_id")
+  professorId String? @map("docente_id")
+  code        String  @map("codigo")
+  shift       String  @map("turno")
+  modality    String  @map("modalidad")
+  vacancies   Int     @map("vacantes")
+  enrolled    Int     @default(0) @map("matriculados")
+  period      String  @map("periodo")
+
+  course    Course            @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  professor Professor?        @relation(fields: [professorId], references: [id], onDelete: SetNull)
+  sessions  ClassSession[]
+  schedules ScheduleSection[]
+
+  @@index([courseId])
+  @@index([professorId])
+  @@map("Secciones")
+}
+
+// 6. SESIONES DE CLASE
+model ClassSession {
+  id        String  @id @default(cuid())
+  sectionId String  @map("seccion_id")
+  day       String  @map("dia")
+  startTime String  @map("hora_inicio") @db.VarChar(5)
+  endTime   String  @map("hora_fin") @db.VarChar(5)
+  classroom String? @map("aula")
+
+  section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@index([sectionId])
+  @@map("Sesiones_Clase")
+}
+
+// 7. CURSOS APROBADOS
+model ApprovedCourse {
+  id           String   @id @default(cuid())
+  studentId    String   @map("estudiante_id")
+  courseId     String   @map("curso_id")
+  grade        Decimal? @map("nota") @db.Decimal(4, 2)
+  attempt      Int      @default(1) @map("intento")
+  status       String   @map("estado")
+  registeredAt DateTime @default(now()) @map("fecha_registro")
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course  Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, courseId, attempt])
+  @@index([studentId])
+  @@map("Cursos_Aprobados")
+}
+
+// 8. PREFERENCIAS DEL ESTUDIANTE
+model StudentPreference {
+  id              String   @id @default(cuid())
+  studentId       String   @unique @map("estudiante_id")
+  availableShifts String[] @default([]) @map("turnos_disponibles")
+  freeDays        String[] @default([]) @map("dias_libres")
+  works           Boolean  @default(false) @map("trabaja")
+  busySchedules   Json     @default("[]") @map("horarios_ocupados")
+  bufferMinutes   Int      @default(30) @map("minutos_margen")
+  maxCourses      Int      @default(6) @map("maximo_cursos")
+  budget          Decimal? @map("presupuesto") @db.Decimal(10, 2)
+  pricePerCredit  Decimal? @map("precio_credito") @db.Decimal(10, 2)
+  professorWeight Float    @default(0.6) @map("peso_docente")
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@map("Preferencias_Estudiante")
+}
+
+// 9. HORARIOS GENERADOS
+model GeneratedSchedule {
+  id              String   @id @default(cuid())
+  studentId       String   @map("estudiante_id")
+  optionNumber    Int      @map("numero_opcion")
+  totalScore      Float    @map("puntaje_total")
+  teacherQuality  Float    @map("calidad_docentes")
+  scheduleComfort Float    @map("comodidad_horario")
+  totalCredits    Int      @map("creditos_totales")
+  totalCost       Decimal  @map("costo_total") @db.Decimal(10, 2)
+  explanation     String   @map("explicacion")
+  generatedAt     DateTime @default(now()) @map("fecha_generacion")
+
+  student  Student           @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  sections ScheduleSection[]
+
+  @@index([studentId])
+  @@map("Horarios_Generados")
+}
+
+// 10. HORARIO-SECCIÓN
+model ScheduleSection {
+  scheduleId String @map("horario_id")
+  sectionId  String @map("seccion_id")
+
+  schedule GeneratedSchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  section  Section           @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@id([scheduleId, sectionId])
+  @@map("Horario_Seccion")
 }

@@ -9,8 +9,7 @@ import {
 import { demoAuthApi } from "./demoAuth";
 
 const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
-const DEMO_AUTH_ENABLED = import.meta.env.DEV || import.meta.env.VITE_DEMO_AUTH === "true";
-
+const DEMO_AUTH_ENABLED = import.meta.env.VITE_DEMO_AUTH === "true";
 interface ApiResponse {
   response: Response;
   payload: unknown;
