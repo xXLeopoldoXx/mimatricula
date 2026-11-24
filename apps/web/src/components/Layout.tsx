@@ -4,7 +4,8 @@ import { BookOpen, CalendarDays, Home, LogOut, Sparkles, Users, Wand2 } from "lu
 import type { Student } from "@mimatricula/shared";
 import { useOfferStore } from "../store/offer";
 import { initials } from "../auth/useStudent";
-import { MAX_CREDITS, round2, useCatalog, useChosen } from "../lib/catalog";
+import { MAX_CREDITS, round2, useCatalog, useChosen, useRegisterOfferProfessors } from "../lib/catalog";
+import CycleBar from "./CycleBar";
 import { LogoMark, Wordmark } from "./Logo";
 
 export const NAV = [
@@ -26,6 +27,8 @@ export default function Layout({
   authError?: string | null;
 }) {
   const { pathname } = useLocation();
+  useRegisterOfferProfessors();
+  const cycleRoute = ["/cursos", "/recomendaciones", "/generador"].includes(pathname);
   // Al cambiar de pantalla volvemos arriba: evita quedar a media página de la anterior
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -40,6 +43,7 @@ export default function Layout({
       )}
       <main className="min-w-0 pb-28 lg:pb-0">
         <ImportedBanner />
+        {cycleRoute && <CycleBar />}
         <div key={pathname} className="wrap page-in py-6 md:py-10">
           <Outlet />
         </div>
