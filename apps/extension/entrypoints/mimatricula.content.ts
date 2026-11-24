@@ -5,7 +5,7 @@ import { PAGE_ACK, PAGE_IMPORT, type ExtMessage, type Result } from "../lib/mess
  * y espera la confirmación (la app puede tardar un poco en montar su listener).
  */
 export default defineContentScript({
-  matches: ["http://localhost:5173/*"],
+  matches: [`${(import.meta.env.WXT_WEB_URL || "http://localhost:5173").replace(/\/$/, "")}/*`],
   main() {
     browser.runtime.onMessage.addListener((msg: ExtMessage, _sender, sendResponse) => {
       if (msg.type !== "MM_DELIVER") return;

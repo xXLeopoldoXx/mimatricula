@@ -1,7 +1,7 @@
 import type { CatalogImport } from "@mimatricula/shared";
 import type { ExtMessage, Result } from "../../lib/messages";
+import { PORTAL_URL } from "../../lib/config";
 
-const PORTAL_URL = "http://localhost:5174/";
 const app = document.getElementById("app")!;
 
 type State =

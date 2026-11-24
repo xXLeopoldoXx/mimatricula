@@ -12,4 +12,4 @@ export type Result<T> = { ok: true; data: T } | { ok: false; error: string };
 export const PAGE_IMPORT = "mimatricula:import";
 export const PAGE_ACK = "mimatricula:import:ack";
 
-export const WEB_URL = "http://localhost:5173/";
+export { WEB_URL } from "./config";

@@ -52,7 +52,8 @@ export async function buildApp(repository: AuthRepository, options: AppOptions =
   const secureCookie = production || sameSite === "none";
   const dummyHash = await argon2.hash(randomBytes(32), ARGON2_OPTIONS);
 
-  const app = Fastify({ logger: options.logger ?? true });
+  // En la nube (Render, detrás de Vercel) la IP real llega en X-Forwarded-For; sin esto el límite de intentos sería uno solo para todos.
+  const app = Fastify({ logger: options.logger ?? true, trustProxy: env.TRUST_PROXY === "true" });
   await app.register(cookie);
   await app.register(cors, {
     origin: (origin, callback) => callback(null, !origin || origins.has(origin)),

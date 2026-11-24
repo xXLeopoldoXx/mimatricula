@@ -1,0 +1,22 @@
+# Render Blueprint: el API de MiMatrícula (apps/api). Los secretos se cargan en el panel de Render.
+services:
+  - type: web
+    name: mimatricula-api
+    runtime: node
+    plan: free
+    region: virginia
+    branch: main
+    buildCommand: npm install -g pnpm@10 && pnpm install --frozen-lockfile && pnpm --filter api db:generate
+    startCommand: NODE_ENV=production pnpm --filter api start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: COOKIE_SAME_SITE
+        value: lax
+      - key: DATABASE_URL
+        sync: false
+      - key: WEB_ORIGINS
+        sync: false

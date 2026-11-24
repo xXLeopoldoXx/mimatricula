@@ -42,7 +42,7 @@ async function deliver(payload: Extract<ExtMessage, { type: "MM_SEND" }>["payloa
   }
   if (!res) {
     // "Receiving end does not exist": la página no cargó o no es MiMatrícula
-    throw new Error("No se pudo conectar con MiMatrícula. Revisa que `pnpm dev` esté corriendo y que http://localhost:5173 cargue.");
+    throw new Error(`No se pudo conectar con MiMatrícula. Revisa que ${WEB_URL} cargue y que hayas iniciado sesión.`);
   }
   if (!res.ok) throw new Error(res.error);
 }
