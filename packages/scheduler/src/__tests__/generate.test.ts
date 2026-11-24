@@ -15,7 +15,14 @@ const base: StudentPreferences = {
   professorWeight: 0.7,
   freeDays: [],
 };
-const run = (p: Partial<StudentPreferences>) => generate({ offer: DEMO_OFFER, stats, prefs: { ...base, ...p }, maxCredits: 22 });
+/** Igual que la web: un ciclo (más los cursos repetidos), no los 66 cursos de todos los ciclos a la vez. */
+function cycleOffer(cycle: string) {
+  const courses = DEMO_OFFER.courses.filter((c) => c.cycle === cycle || c.repeated);
+  const codes = new Set(courses.map((c) => c.code));
+  return { ...DEMO_OFFER, courses, sections: DEMO_OFFER.sections.filter((s) => codes.has(s.courseCode)) };
+}
+const OFFER = cycleOffer("02");
+const run = (p: Partial<StudentPreferences>, offer = OFFER) => generate({ offer, stats, prefs: { ...base, ...p }, maxCredits: 22 });
 
 function noClashes(sections: { sessions: { day: string; start: string; end: string }[] }[]) {
   for (let i = 0; i < sections.length; i++)
@@ -82,10 +89,16 @@ describe("generate", () => {
     expect(layoutOf([s("08:30", "10:00"), s("12:00", "13:30")]).gapMinutes).toBe(105);
   });
 
-  it("termina rápido con la oferta completa", () => {
+  it("termina rápido con la oferta de un ciclo", () => {
     const t = performance.now();
     const r = run({ maxCourses: 8 });
     expect(performance.now() - t).toBeLessThan(3000);
     expect(r.options.length).toBe(3);
   });
+
+  it("con todos los ciclos a la vez corta la búsqueda y aun así devuelve opciones válidas", () => {
+    const r = run({ maxCourses: 8 }, DEMO_OFFER);
+    expect(r.options.length).toBe(3);
+    for (const o of r.options) noClashes(o.picks.map((p) => p.section));
+  }, 30_000);
 });

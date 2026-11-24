@@ -2,9 +2,8 @@ import { useMemo, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router";
 import { ArrowLeft, ThumbsDown, ThumbsUp } from "lucide-react";
 import type { Review, Student } from "@mimatricula/shared";
-import { useAllReviews, useCatalog, useChosen, useProfessorStats } from "../lib/catalog";
+import { useAllReviews, useCatalog, useChosen, useDirectory, useProfessorStats } from "../lib/catalog";
 import { useMyReviews } from "../store/reviews";
-import NoOffer from "../components/NoOffer";
 import { tierOf } from "../components/ScoreBadge";
 import SectionRow from "../components/SectionRow";
 import { StarInput, Stars } from "../components/Stars";
@@ -32,6 +31,7 @@ const TAG_OPTIONS = [
 export default function ProfessorDetailPage({ student }: { student: Student }) {
   const { id = "" } = useParams();
   const catalog = useCatalog();
+  const dir = useDirectory();
   const chosen = useChosen(catalog);
   const stats = useProfessorStats();
   const reviews = useAllReviews();
@@ -41,12 +41,11 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
     [reviews, id],
   );
 
-  if (!catalog) return <NoOffer />;
-  const prof = catalog.professorById.get(id);
+  const prof = dir.professors.get(id);
   if (!prof) {
     return (
       <div className="card mx-auto max-w-md p-10 text-center">
-        <h1 className="text-lg font-bold">No encontramos a este docente en tu oferta</h1>
+        <h1 className="text-lg font-bold">No encontramos a este docente</h1>
         <Link to="/profesores" className="btn btn-primary mt-5">
           Ver profesores
         </Link>
@@ -54,8 +53,11 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
     );
   }
   const s = stats.get(id);
-  const sections = catalog.offer.sections.filter((x) => x.professorId === id);
-  const courseCodes = [...new Set(sections.map((x) => x.courseCode))];
+  const sections = (catalog?.fullOffer.sections ?? []).filter((x) => x.professorId === id);
+  const taught = [...(dir.coursesByProf.get(id) ?? [])];
+  // Si aún no se sabe qué dicta, se puede calificar en cualquier curso
+  const courseCodes = taught.length ? taught : [...dir.courses.keys()];
+  const courseName = (c: string) => dir.courses.get(c)?.name ?? c;
 
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-6">
@@ -120,29 +122,31 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
         )}
       </section>
 
-      <section className="card overflow-hidden">
-        <h2 className="border-utp-line border-b px-5 py-4 text-lg font-bold">Secciones que dicta en tu oferta</h2>
-        <div className="divide-utp-line divide-y">
-          {sections.map((x) => (
-            <ul key={x.code}>
-              <li className="bg-utp-bg/70 text-utp-muted px-5 py-2 text-xs font-semibold">{catalog.courseByCode.get(x.courseCode)?.name}</li>
-              <SectionRow course={catalog.courseByCode.get(x.courseCode)!} section={x} chosen={chosen} stats={s} />
-            </ul>
-          ))}
-        </div>
-      </section>
+      {catalog && sections.length > 0 && (
+        <section className="card overflow-hidden">
+          <h2 className="border-utp-line border-b px-5 py-4 text-lg font-bold">Secciones que dicta en tu oferta</h2>
+          <div className="divide-utp-line divide-y">
+            {sections.map((x) => (
+              <ul key={x.code}>
+                <li className="bg-utp-bg/70 text-utp-muted px-5 py-2 text-xs font-semibold">{catalog.courseByCode.get(x.courseCode)?.name}</li>
+                <SectionRow course={catalog.courseByCode.get(x.courseCode)!} section={x} chosen={chosen} stats={s} />
+              </ul>
+            ))}
+          </div>
+        </section>
+      )}
 
       <div className="grid items-start gap-6 lg:grid-cols-[1fr_380px]">
         <section className="card overflow-hidden">
           <h2 className="border-utp-line border-b px-5 py-4 text-lg font-bold">Reseñas ({mine.length})</h2>
           <ul className="divide-utp-line divide-y">
             {mine.map((r) => (
-              <ReviewItem key={r.id} r={r} courseName={catalog.courseByCode.get(r.courseCode)?.name ?? r.courseCode} />
+              <ReviewItem key={r.id} r={r} courseName={courseName(r.courseCode)} />
             ))}
             {mine.length === 0 && <li className="text-utp-muted px-5 py-10 text-center text-sm">Aún no hay reseñas. Sé la primera persona en escribir una.</li>}
           </ul>
         </section>
-        <ReviewForm professorId={id} courseCodes={courseCodes} catalogCourseName={(c) => catalog.courseByCode.get(c)?.name ?? c} student={student} />
+        <ReviewForm professorId={id} courseCodes={courseCodes} catalogCourseName={courseName} student={student} />
       </div>
     </div>
   );
