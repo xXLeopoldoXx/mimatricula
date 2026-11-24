@@ -4,7 +4,7 @@ import type { CatalogImport } from "@mimatricula/shared";
 
 /** Corre dentro del portal de matrícula. Solo lee: nunca hace clic ni envía formularios. */
 export default defineContentScript({
-  matches: ["http://localhost:5174/*"],
+  matches: [`${(import.meta.env.WXT_PORTAL_URL || "http://localhost:5174").replace(/\/$/, "")}/*`],
   main() {
     browser.runtime.onMessage.addListener((msg: ExtMessage, _sender, sendResponse) => {
       if (msg.type !== "MM_EXTRACT") return;
