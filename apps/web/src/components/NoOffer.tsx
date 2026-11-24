@@ -2,6 +2,10 @@ import { Download, PlayCircle } from "lucide-react";
 import { DEMO_OFFER } from "@mimatricula/demo-data";
 import { useOfferStore } from "../store/offer";
 
+/** Portal de matrícula simulado: en local corre en el puerto 5174; en producción está en Vercel. */
+const PORTAL_URL =
+  import.meta.env.VITE_PORTAL_URL || (import.meta.env.DEV ? "http://localhost:5174/" : "https://mimatricula-portal.vercel.app/");
+
 /** Se muestra cuando todavía no hay oferta: importar con la extensión o usar la demo. */
 export default function NoOffer() {
   const setImported = useOfferStore((s) => s.setImported);
@@ -25,7 +29,7 @@ export default function NoOffer() {
             <li>Haz clic en la extensión MiMatrícula.</li>
             <li>Pulsa “Extraer oferta” y luego “Enviar a MiMatrícula”.</li>
           </ol>
-          <a href="http://localhost:5174/" target="_blank" rel="noreferrer" className="btn btn-primary mt-auto self-start">
+          <a href={PORTAL_URL} target="_blank" rel="noreferrer" className="btn btn-primary mt-auto self-start">
             Abrir portal de matrícula
           </a>
         </section>
