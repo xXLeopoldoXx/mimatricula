@@ -41,7 +41,7 @@ export default function App() {
         <Route path="cursos" element={<CoursesPage />} />
         <Route path="horario" element={<SchedulePage />} />
         <Route path="profesores" element={<ProfessorsPage />} />
-        <Route path="profesores/:id" element={<ProfessorDetailPage student={student} />} />
+        <Route path="profesores/:id" element={<ProfessorDetailPage />} />
         <Route path="recomendaciones" element={<RecommendationsPage />} />
         <Route path="generador" element={<GeneratorPage />} />
         <Route path="*" element={<NotFoundPage />} />

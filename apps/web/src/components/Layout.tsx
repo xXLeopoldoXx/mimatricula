@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation, useNavigate } from "react-router";
 import { BookOpen, CalendarDays, Home, LogOut, Sparkles, Users, Wand2 } from "lucide-react";
 import type { Student } from "@mimatricula/shared";
 import { useOfferStore } from "../store/offer";
+import { useReviews } from "../store/reviews";
 import { initials } from "../auth/useStudent";
 import { MAX_CREDITS, round2, useCatalog, useChosen, useRegisterOfferProfessors } from "../lib/catalog";
 import CycleBar from "./CycleBar";
@@ -27,6 +28,11 @@ export default function Layout({
   authError?: string | null;
 }) {
   const { pathname } = useLocation();
+  // Reseñas de la comunidad: se piden al entrar y se descartan al cerrar sesión
+  useEffect(() => {
+    void useReviews.getState().load();
+    return () => useReviews.getState().reset();
+  }, []);
   useRegisterOfferProfessors();
   const cycleRoute = ["/cursos", "/recomendaciones", "/generador"].includes(pathname);
   // Al cambiar de pantalla volvemos arriba: evita quedar a media página de la anterior

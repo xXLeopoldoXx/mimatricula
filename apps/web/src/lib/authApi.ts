@@ -6,10 +6,8 @@ import {
   type RegistrationInput,
   type Student,
 } from "@mimatricula/shared";
+import { API_BASE, DEMO_AUTH_ENABLED } from "./apiConfig";
 import { demoAuthApi } from "./demoAuth";
-
-const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
-const DEMO_AUTH_ENABLED = import.meta.env.DEV || import.meta.env.VITE_DEMO_AUTH === "true";
 
 interface ApiResponse {
   response: Response;

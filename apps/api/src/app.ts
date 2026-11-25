@@ -7,10 +7,19 @@ import Fastify, { type FastifyInstance, type FastifyReply, type FastifyRequest }
 import {
   LoginSchema,
   RegistrationSchema,
+  ReviewInputSchema,
   studentCodeFromEmail,
+  type Review,
   type Student,
 } from "@mimatricula/shared";
-import { DuplicateStudentError, type AuthRepository, type StudentRecord } from "./repository";
+import {
+  DuplicateReviewError,
+  DuplicateStudentError,
+  type AuthRepository,
+  type ReviewRecord,
+  type ReviewRepository,
+  type StudentRecord,
+} from "./repository";
 
 const SESSION_COOKIE = "mm_session";
 const SESSION_SECONDS = 60 * 60 * 24 * 7;
@@ -39,7 +48,30 @@ function publicStudent(student: StudentRecord): Student {
   };
 }
 
-export async function buildApp(repository: AuthRepository, options: AppOptions = {}): Promise<FastifyInstance> {
+/** Reseñas sin autor: la fecha se redondea al mes para que fecha + curso + ciclo no delaten a nadie en secciones pequeñas. */
+function publicReview(review: ReviewRecord, viewerId: string): Review {
+  const created = review.createdAt;
+  return {
+    id: review.id,
+    professorId: review.professorRef,
+    courseCode: review.courseCode,
+    term: review.academicPeriod,
+    clarity: review.clarity,
+    rigor: review.rigor,
+    punctuality: review.punctuality,
+    treatment: review.treatment,
+    wouldRecommend: review.recommends,
+    comment: review.comment,
+    tags: review.tags,
+    createdAt: new Date(Date.UTC(created.getUTCFullYear(), created.getUTCMonth(), 1)).toISOString(),
+    demo: false,
+    mine: review.studentId === viewerId,
+  };
+}
+
+const REVIEW_LIST_LIMIT = 5000;
+
+export async function buildApp(repository: AuthRepository & ReviewRepository, options: AppOptions = {}): Promise<FastifyInstance> {
   const env = options.env ?? process.env;
   const origins = new Set(
     (env.WEB_ORIGINS ?? "http://localhost:5173")
@@ -58,7 +90,7 @@ export async function buildApp(repository: AuthRepository, options: AppOptions =
   await app.register(cors, {
     origin: (origin, callback) => callback(null, !origin || origins.has(origin)),
     credentials: true,
-    methods: ["GET", "POST", "OPTIONS"],
+    methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
   });
   await app.register(rateLimit, { global: false });
@@ -154,19 +186,29 @@ export async function buildApp(repository: AuthRepository, options: AppOptions =
     },
   );
 
-  app.get("/api/auth/me", async (request, reply) => {
+  /** Estudiante de la sesión activa, o null (y responde 401) si no hay o expiró. */
+  async function authenticate(request: FastifyRequest, reply: FastifyReply): Promise<StudentRecord | null> {
     const token = request.cookies[SESSION_COOKIE];
-    if (!token) return reply.code(401).send({ error: "No hay una sesión activa" });
+    if (!token) {
+      void reply.code(401).send({ error: "No hay una sesión activa" });
+      return null;
+    }
 
     const tokenHash = hashToken(token);
     const session = await repository.findSessionByTokenHash(tokenHash);
     if (!session || session.expiresAt <= new Date()) {
       if (session) await repository.deleteSessionByTokenHash(tokenHash);
       clearSessionCookie(reply);
-      return reply.code(401).send({ error: "La sesión expiró" });
+      void reply.code(401).send({ error: "La sesión expiró" });
+      return null;
     }
+    return session.student;
+  }
 
-    return reply.send({ student: publicStudent(session.student) });
+  app.get("/api/auth/me", async (request, reply) => {
+    const student = await authenticate(request, reply);
+    if (!student) return reply;
+    return reply.send({ student: publicStudent(student) });
   });
 
   app.post("/api/auth/logout", async (request, reply) => {
@@ -174,6 +216,58 @@ export async function buildApp(repository: AuthRepository, options: AppOptions =
     const token = request.cookies[SESSION_COOKIE];
     if (token) await repository.deleteSessionByTokenHash(hashToken(token));
     clearSessionCookie(reply);
+    return reply.code(204).send();
+  });
+
+  // ───── Reseñas de docentes ─────
+  // Quien las lee ve el contenido sin autor; solo `mine` indica cuáles son suyas.
+
+  app.get("/api/reviews", async (request, reply) => {
+    const student = await authenticate(request, reply);
+    if (!student) return reply;
+    const records = await repository.listReviews(REVIEW_LIST_LIMIT);
+    void reply.header("Cache-Control", "no-store");
+    return reply.send({ reviews: records.map((record) => publicReview(record, student.id)) });
+  });
+
+  app.post(
+    "/api/reviews",
+    { config: { rateLimit: { max: 20, timeWindow: "1 hour" } } },
+    async (request, reply) => {
+      if (rejectOrigin(request, reply)) return;
+      const student = await authenticate(request, reply);
+      if (!student) return reply;
+
+      const parsed = ReviewInputSchema.safeParse(request.body);
+      if (!parsed.success) {
+        return reply.code(400).send({ error: parsed.error.issues[0]?.message ?? "Revisa los datos de la reseña" });
+      }
+
+      const { professorId, term, wouldRecommend, ...rest } = parsed.data;
+      try {
+        const record = await repository.createReview({
+          studentId: student.id,
+          professorRef: professorId,
+          academicPeriod: term,
+          recommends: wouldRecommend,
+          ...rest,
+        });
+        return reply.code(201).send({ review: publicReview(record, student.id) });
+      } catch (error) {
+        if (error instanceof DuplicateReviewError) {
+          return reply.code(409).send({ error: "Ya reseñaste a este docente en este curso y ciclo. Elimina tu reseña para escribir otra." });
+        }
+        throw error;
+      }
+    },
+  );
+
+  app.delete<{ Params: { id: string } }>("/api/reviews/:id", async (request, reply) => {
+    if (rejectOrigin(request, reply)) return;
+    const student = await authenticate(request, reply);
+    if (!student) return reply;
+    const deleted = await repository.deleteReview(request.params.id, student.id);
+    if (!deleted) return reply.code(404).send({ error: "No encontramos esa reseña entre las tuyas" });
     return reply.code(204).send();
   });
 
