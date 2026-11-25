@@ -263,7 +263,7 @@ export default function LoginPage({ onLogin, onRegister, imported, initialError 
                     }}
                     onBlur={() => touch("name")}
                     error={fieldError("name")}
-                    placeholder="Leopoldo Brito"
+                    placeholder="Introduce tu nombre completo"
                     disabled={!isRegister}
                   />
                 </Collapse>
