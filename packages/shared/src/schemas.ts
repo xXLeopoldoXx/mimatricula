@@ -86,8 +86,25 @@ export const ReviewSchema = z.object({
   createdAt: z.string(),
   /** Reseñas de simulación para la demo; se pueden borrar todas con un filtro. */
   demo: z.boolean().default(false),
+  /** Solo la pone el API: true si la reseña es de quien la pide. Nunca se expone quién escribió las demás. */
+  mine: z.boolean().optional(),
 });
 export type Review = z.infer<typeof ReviewSchema>;
+
+/** Lo que el estudiante envía al publicar una reseña; el servidor agrega id, fecha y autor. */
+export const ReviewInputSchema = z.object({
+  professorId: z.string().regex(/^[\p{L}\p{N}._-]{1,120}$/u, "Docente inválido"),
+  courseCode: z.string().regex(/^[A-Za-z0-9]{2,12}$/, "Curso inválido"),
+  term: z.string().regex(/^\d{4}-[0-9]$/, "Ciclo inválido, usa AAAA-N"),
+  clarity: Score,
+  rigor: Score,
+  punctuality: Score,
+  treatment: Score,
+  wouldRecommend: z.boolean(),
+  comment: z.string().trim().min(15, "Escribe un comentario de al menos 15 caracteres").max(800, "El comentario no puede superar 800 caracteres"),
+  tags: z.array(z.string().trim().min(1).max(40)).max(3, "Elige hasta 3 etiquetas").default([]),
+});
+export type ReviewInput = z.infer<typeof ReviewInputSchema>;
 
 /** Lo que el portal expone (y la extensión envía) para un periodo de matrícula. */
 export const EnrollmentOfferSchema = z.object({

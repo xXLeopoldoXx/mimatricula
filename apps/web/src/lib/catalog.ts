@@ -14,7 +14,8 @@ import { resolveOffer } from "./directory";
 import { communityId, useCommunityProfessors } from "../store/professors";
 import { useCycle } from "../store/cycle";
 import { useOfferStore } from "../store/offer";
-import { useMyReviews } from "../store/reviews";
+import { DEMO_AUTH_ENABLED } from "./apiConfig";
+import { useReviews } from "../store/reviews";
 import { useSelection } from "../store/selection";
 
 export interface Catalog {
@@ -118,10 +119,10 @@ export function useDirectory() {
   }, [catalog, community]);
 }
 
-/** Reseñas de demo + las escritas por el estudiante. */
+/** Reseñas de demostración + las de la comunidad (del servidor) o, en modo demostración, las de este navegador. */
 export function useAllReviews(): Review[] {
-  const mine = useMyReviews((s) => s.mine);
-  return useMemo(() => [...mine, ...DEMO_REVIEWS], [mine]);
+  const list = useReviews((s) => (DEMO_AUTH_ENABLED ? s.mine : s.remote));
+  return useMemo(() => [...list, ...DEMO_REVIEWS], [list]);
 }
 
 export function useProfessorStats(): Map<string, ProfessorStats> {

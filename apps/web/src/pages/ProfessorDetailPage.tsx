@@ -1,9 +1,10 @@
 import { useMemo, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router";
 import { ArrowLeft, ThumbsDown, ThumbsUp } from "lucide-react";
-import type { Review, Student } from "@mimatricula/shared";
+import type { Review } from "@mimatricula/shared";
 import { useAllReviews, useCatalog, useChosen, useDirectory, useProfessorStats } from "../lib/catalog";
-import { useMyReviews } from "../store/reviews";
+import { DEMO_AUTH_ENABLED } from "../lib/apiConfig";
+import { useReviews } from "../store/reviews";
 import { tierOf } from "../components/ScoreBadge";
 import SectionRow from "../components/SectionRow";
 import { StarInput, Stars } from "../components/Stars";
@@ -28,7 +29,7 @@ const TAG_OPTIONS = [
   "Poca retroalimentación",
 ];
 
-export default function ProfessorDetailPage({ student }: { student: Student }) {
+export default function ProfessorDetailPage() {
   const { id = "" } = useParams();
   const catalog = useCatalog();
   const dir = useDirectory();
@@ -146,13 +147,16 @@ export default function ProfessorDetailPage({ student }: { student: Student }) {
             {mine.length === 0 && <li className="text-utp-muted px-5 py-10 text-center text-sm">Aún no hay reseñas. Sé la primera persona en escribir una.</li>}
           </ul>
         </section>
-        <ReviewForm professorId={id} courseCodes={courseCodes} catalogCourseName={courseName} student={student} />
+        <ReviewForm professorId={id} courseCodes={courseCodes} catalogCourseName={courseName} />
       </div>
     </div>
   );
 }
 
 function ReviewItem({ r, courseName }: { r: Review; courseName: string }) {
+  const remove = useReviews((st) => st.remove);
+  const [confirming, setConfirming] = useState(false);
+  const [removeError, setRemoveError] = useState<string | null>(null);
   const overall = (r.clarity + r.punctuality + r.treatment) / 3;
   return (
     <li className="px-5 py-4">
@@ -172,10 +176,38 @@ function ReviewItem({ r, courseName }: { r: Review; courseName: string }) {
         )}
         {r.demo ? (
           <span className="bg-utp-bg rounded-md px-1.5 py-0.5 text-[10px] font-semibold">Demo</span>
-        ) : (
+        ) : r.mine ? (
           <span className="bg-utp-violet-soft text-utp-violet rounded-md px-1.5 py-0.5 text-[10px] font-semibold">Tuya</span>
+        ) : null}
+        {r.mine && !r.demo && (
+          <span className="ml-auto flex items-center gap-2">
+            {confirming ? (
+              <>
+                <span className="font-medium">¿Eliminarla?</span>
+                <button
+                  type="button"
+                  onClick={async () => setRemoveError(await remove(r.id))}
+                  className="text-utp-red font-bold hover:underline"
+                >
+                  Sí, eliminar
+                </button>
+                <button type="button" onClick={() => setConfirming(false)} className="font-semibold hover:underline">
+                  Cancelar
+                </button>
+              </>
+            ) : (
+              <button type="button" onClick={() => setConfirming(true)} className="hover:text-utp-red font-semibold hover:underline">
+                Eliminar
+              </button>
+            )}
+          </span>
         )}
       </div>
+      {removeError && (
+        <p role="alert" className="text-utp-red mt-1 text-xs font-medium">
+          {removeError}
+        </p>
+      )}
       <p className="mt-2 text-[15px] leading-relaxed">{r.comment}</p>
       {r.tags.length > 0 && (
         <div className="mt-2.5 flex flex-wrap gap-1.5">
@@ -194,14 +226,13 @@ function ReviewForm({
   professorId,
   courseCodes,
   catalogCourseName,
-  student,
 }: {
   professorId: string;
   courseCodes: string[];
   catalogCourseName: (code: string) => string;
-  student: Student;
 }) {
-  const add = useMyReviews((st) => st.add);
+  const add = useReviews((st) => st.add);
+  const [pending, setPending] = useState(false);
   const empty = { clarity: 0, rigor: 0, punctuality: 0, treatment: 0 };
   const [scores, setScores] = useState(empty);
   const [course, setCourse] = useState(courseCodes[0] ?? "");
@@ -211,13 +242,14 @@ function ReviewForm({
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
+    if (pending) return;
     if (Object.values(scores).some((v) => v === 0)) return setError("Califica los cuatro criterios.");
     if (recommend === null) return setError("Indica si lo recomiendas.");
     if (comment.trim().length < 15) return setError("Escribe un comentario de al menos 15 caracteres.");
-    add({
-      id: crypto.randomUUID(),
+    setPending(true);
+    const failure = await add({
       professorId,
       courseCode: course,
       term: "2026-2",
@@ -225,9 +257,12 @@ function ReviewForm({
       wouldRecommend: recommend,
       comment: comment.trim().slice(0, 800),
       tags,
-      createdAt: new Date().toISOString(),
-      demo: false,
     });
+    setPending(false);
+    if (failure) {
+      setSent(false);
+      return setError(failure);
+    }
     setScores(empty);
     setRecommend(null);
     setTags([]);
@@ -240,7 +275,9 @@ function ReviewForm({
     <form onSubmit={submit} className="card h-fit p-5 lg:sticky lg:top-6">
       <h2 className="text-lg font-bold">Escribe una reseña</h2>
       <p className="text-utp-muted mt-1 text-[13px] leading-relaxed">
-        {student.name.split(" ")[0]}, tu reseña se muestra de forma anónima para otros estudiantes.
+        {DEMO_AUTH_ENABLED
+          ? "En esta versión de demostración tu reseña se guarda solo en este navegador."
+          : "Tu reseña se muestra sin tu nombre. Evita datos que te identifiquen (día exacto, auxiliares, anécdotas). Solo el equipo puede asociarla a tu cuenta, para evitar abusos."}
       </p>
 
       {sent && (
@@ -321,8 +358,8 @@ function ReviewForm({
           {error}
         </p>
       )}
-      <button type="submit" className="btn btn-primary mt-4 w-full">
-        Publicar reseña
+      <button type="submit" disabled={pending} className="btn btn-primary mt-4 w-full">
+        {pending ? "Publicando…" : "Publicar reseña"}
       </button>
     </form>
   );
